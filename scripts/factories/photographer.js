@@ -31,17 +31,22 @@ function photographerFactorySingle(data)
     
     // Fonction de la création des cartes des photographes
     const getUserCardDOM = () => `
-                <article>
-                    <a href="photographer.html?id=${id}">
+                <div class="single-photograph-text">
+                    <h2>${name}</h2>
+                    <h3>${city}, ${country}</h3>
+                    <p class="tagline">${tagline}</p>
+                </div>
+
+                <div class="justify-center">
+                    <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+                </div>
+
+                <div class="justify-center">
+                    <a class="single-photograph-img" href="photographer.html?id=${id}">
                         <img src="${picture}" alt="Photo de ${name}">
                     </a>
-                    <div class="info">
-                        <h2>${name}</h2>
-                        <h3>${city}, ${country}</h3>
-                        <p class="tagline">${tagline}</p>
-                        <p class="price">${price}€/jour</p>
-                    </div>
-                </article>`;
+                </div>
+              `;
     
     return { name, id, picture, city, country, tagline, price, getUserCardDOM};
 }

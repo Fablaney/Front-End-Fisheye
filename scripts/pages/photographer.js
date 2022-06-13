@@ -44,20 +44,14 @@ async function displayData(onePhotographer)
     console.log("console du display data")
     console.log(onePhotographer)
 
-    // Je boucle sur photographers pour afficher les cards de chaque photographe
-    onePhotographer.forEach((onePhotograph) => {
+    // je prend la fonction pour afficher les cards et je lui passe les données des photographes
+    const photographerModel = photographerFactorySingle(onePhotographer);
 
-        console.log("console du foreach")
-        console.log(onePhotograph);
+    const userCardDOM = photographerModel.getUserCardDOM();
 
-        // je prend la fonction pour afficher les cards et je lui passe les données des photographes
-        const photographerModel = photographerFactorySingle(onePhotograph);
+    // photographersSection.appendChild(userCardDOM);
+    photographersSection.insertAdjacentHTML('beforeEnd', userCardDOM);
 
-        const userCardDOM = photographerModel.getUserCardDOM();
-
-        // photographersSection.appendChild(userCardDOM);
-        photographersSection.insertAdjacentHTML('beforeEnd', userCardDOM);
-    });
 }
 
 
