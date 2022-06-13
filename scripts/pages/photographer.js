@@ -64,7 +64,7 @@ async function displayData(onePhotographer)
 async function init()
 {
     // Récupère les datas du photographe
-    const { onePhotographer } = await getPhotographers()
+    const  onePhotographer  = await getPhotographers()
 
     console.log("console du init")
     console.log(onePhotographer)
