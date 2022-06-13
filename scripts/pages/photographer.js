@@ -6,14 +6,12 @@ let parsedUrl = new URL(window.location.href);
 // Je récupere uniquement l'id et je la transfere dans une variable 
 let idPhotograph = parsedUrl.searchParams.get("id")
 
-// console.log("id du photographe : " + idPhotograph);
-
 // Je convertis l'id en nombre
 idPhotograph = Number(idPhotograph)
+console.log("id du photographe : " + idPhotograph);
 // console.log(typeof idPhotograph)
 // console.log(idPhotograph)
 
-// const onePhotographer = data.photographers.find(x => x.id === idPhotograph);
 
 // Je vais lire dans data les données des photographes sous forme de tableau / API / base de données
 async function getPhotographers()
@@ -26,6 +24,7 @@ async function getPhotographers()
 
     // affiche les photographes en console
     // console.log(photographers.photographers);
+
     console.log("console du getphotographers")
     console.log("affiche le photographe demandé")
     const onePhotographer = photographers.photographers.find(x => x.id === idPhotograph)
@@ -34,8 +33,6 @@ async function getPhotographers()
     // affiche les medias en console
     // console.log(photographers.media);
 
-
-    
     return onePhotographer
 }
 
@@ -43,15 +40,18 @@ async function getPhotographers()
 async function displayData(onePhotographer)
 {
     const photographersSection = document.querySelector(".photograph-header");
+
     console.log("console du display data")
     console.log(onePhotographer)
 
     // Je boucle sur photographers pour afficher les cards de chaque photographe
-    onePhotographer.forEach((onePhotographer) => {
+    onePhotographer.forEach((onePhotograph) => {
 
-        console.log(onePhotographer);
+        console.log("console du foreach")
+        console.log(onePhotograph);
+
         // je prend la fonction pour afficher les cards et je lui passe les données des photographes
-        const photographerModel = photographerFactory(onePhotographer);
+        const photographerModel = photographerFactorySingle(onePhotograph);
 
         const userCardDOM = photographerModel.getUserCardDOM();
 
@@ -63,7 +63,7 @@ async function displayData(onePhotographer)
 
 async function init()
 {
-    // Récupère les datas des photographes
+    // Récupère les datas du photographe
     const { onePhotographer } = await getPhotographers();
 
     console.log("console du init")
