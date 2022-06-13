@@ -63,35 +63,3 @@ async function init()
 
 init();
 
-// Fonction pour afficher la page de 1 photographe
-function onePhotographFactory(onePhotographer)
-{
-    console.log("test")
-    console.log(onePhotographer)
-
-    const { name, id, portrait, city, country, tagline, price } = onePhotographer;
-
-    const picture = `assets/photographers/${name}/${portrait}`;
-    
-    // Fonction de la création des cartes des photographes
-    const getPhotographePage = () => `
-                <div>
-
-                    <div class="">
-                        <h2>${name}</h2>
-                        <h3>${city}, ${country}</h3>
-                        <p class="tagline">${tagline}</p>
-                    </div>
-
-                    <div class="">
-                        Contactez moi
-                    </div>
-
-                    <div class="">
-                        <img src="${picture}" alt="Photo de ${name}">
-                    </div>
-
-                </div>`;
-
-    return { name, id, picture, city, country, tagline, price, getPhotographePage};
-}
