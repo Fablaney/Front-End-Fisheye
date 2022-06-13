@@ -39,17 +39,18 @@ async function getPhotographers()
 // Renvoie les données et les fait apparaitre dans le dom dans ".photograph-header"
 async function displayData(onePhotographer)
 {
+    // je selectionne le bloc html ou je vais afficher les infos 
     const photographersSection = document.querySelector(".photograph-header");
 
     console.log("console du display data")
     console.log(onePhotographer)
 
-    // je prend la fonction pour afficher les cards et je lui passe les données des photographes
+    // je prend la fonction pour afficher les infos et je lui passe les données du photographe
     const photographerModel = photographerFactorySingle(onePhotographer);
 
     const userCardDOM = photographerModel.getUserCardDOM();
 
-    // photographersSection.appendChild(userCardDOM);
+    // j'insere le bloc dans la page html dans le bloc .photograph-header
     photographersSection.insertAdjacentHTML('beforeEnd', userCardDOM);
 
 }
