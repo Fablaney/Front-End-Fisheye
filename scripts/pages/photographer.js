@@ -13,53 +13,61 @@ idPhotograph = Number(idPhotograph)
 // console.log(typeof idPhotograph)
 // console.log(idPhotograph)
 
+// const onePhotographer = data.photographers.find(x => x.id === idPhotograph);
 
 // Je vais lire dans data les données des photographes sous forme de tableau / API / base de données
-async function getPhotograph()
+async function getPhotographers()
 {
     // va chercher l'api
-    let response = await fetch('/data/photographers.json');
+    let response = await fetch('/data/photographers.json')
 
     // lire le corps de réponse et analyser en JSON
-    // let photographers = await response.json(); 
-    let data = await response.json(); 
+    let photographers = await response.json()
 
     // affiche les photographes en console
-    console.log("Tous le sphotographes : ");
-    console.log(data.photographers);
-
-    // chere 1 photographe par son id
-    const onePhotographer = data.photographers.find(x => x.id === idPhotograph);
-
-    console.log("Le photographe trouvé par son id : ")
+    // console.log(photographers.photographers);
+    console.log("console du getphotographers")
+    console.log("affiche le photographe demandé")
+    const onePhotographer = photographers.photographers.find(x => x.id === idPhotograph)
     console.log(onePhotographer)
 
+    // affiche les medias en console
+    // console.log(photographers.media);
+
+
+    
     return onePhotographer
 }
 
-
-// Renvoie les données et les fait apparaitre dans le dom dans ".photographer-header"
+// Renvoie les données et les fait apparaitre dans le dom dans ".photograph-header"
 async function displayData(onePhotographer)
 {
     const photographersSection = document.querySelector(".photograph-header");
+    console.log("console du display data")
+    console.log(onePhotographer)
 
-    // je prend la fonction pour afficher les les infos de 1 photographe et je lui passe les données du photographe
-    const photographerModel = onePhotographFactory(onePhotographer);
+    // Je boucle sur photographers pour afficher les cards de chaque photographe
+    onePhotographer.forEach((onePhotographer) => {
 
-    const getPhotographe = photographerModel.getPhotographePage();
+        console.log(onePhotographer);
+        // je prend la fonction pour afficher les cards et je lui passe les données des photographes
+        const photographerModel = photographerFactory(onePhotographer);
 
-    // photographersSection.appendChild(getPhotographe);
-    photographersSection.insertAdjacentHTML('beforeEnd', getPhotographe);
+        const userCardDOM = photographerModel.getUserCardDOM();
 
-}
+        // photographersSection.appendChild(userCardDOM);
+        photographersSection.insertAdjacentHTML('beforeEnd', userCardDOM);
+    });
+};
 
 
 async function init()
 {
     // Récupère les datas des photographes
-    const { onePhotographer } = await getPhotograph();
+    const { onePhotographer } = await getPhotographers();
 
-    // console.log( onePhotographer );
+    console.log("console du init")
+    console.log(onePhotographer);
     
     displayData(onePhotographer);
 }
