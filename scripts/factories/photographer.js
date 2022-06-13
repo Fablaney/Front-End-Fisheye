@@ -25,15 +25,15 @@ function photographerFactory(data)
 // Fonction pour afficher la page de 1 photographe
 function onePhotographFactory(onePhotographer)
 {
-    console.log("test")
-    console.log(onePhotographer)
+    // console.log("test")
+    // console.log(onePhotographer)
 
     const { name, id, portrait, city, country, tagline, price } = onePhotographer;
 
     const picture = `assets/photographers/${name}/${portrait}`;
     
     // Fonction de la création des cartes des photographes
-    const getPhotographe = () => `
+    const getPhotographePage = () => `
                 <div>
 
                     <div class="">
@@ -52,5 +52,5 @@ function onePhotographFactory(onePhotographer)
 
                 </div>`;
 
-    return { name, id, picture, city, country, tagline, price, getPhotographe};
+    return { name, id, picture, city, country, tagline, price, getPhotographePage};
 }

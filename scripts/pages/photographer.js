@@ -28,8 +28,8 @@ async function getPhotograph()
     // chere 1 photographe par son id
     const onePhotographer = data.photographers.find(x => x.id === idPhotograph);
 
-    // console.log("Le photographe trouvé par son id : ")
-    // console.log(onePhotographer)
+    console.log("Le photographe trouvé par son id : ")
+    console.log(onePhotographer)
 
     return onePhotographer
 }
@@ -40,18 +40,15 @@ async function displayData(onePhotographer)
 {
     const photographersSection = document.querySelector(".photograph-header");
 
-    // Je boucle sur photographers pour afficher les cards de chaque photographe
-    // photographers.forEach((onePhotographer) => {
+    // je prend la fonction pour afficher les les infos de 1 photographe et je lui passe les données du photographe
+    const photographerModel = onePhotographFactory(onePhotographer);
 
-        // je prend la fonction pour afficher les les infos de 1 photographe et je lui passe les données du photographe
-        const photographerModel = onePhotographFactory(onePhotographer);
+    const getPhotographe = photographerModel.getPhotographePage();
 
-        const getPhotographe = photographerModel.getPhotographe();
+    // photographersSection.appendChild(getPhotographe);
+    photographersSection.insertAdjacentHTML('beforeEnd', getPhotographe);
 
-        // photographersSection.appendChild(getPhotographe);
-        photographersSection.insertAdjacentHTML('beforeEnd', getPhotographe);
-    // });
-};
+}
 
 
 async function init()
@@ -65,3 +62,36 @@ async function init()
 }
 
 init();
+
+// Fonction pour afficher la page de 1 photographe
+function onePhotographFactory(onePhotographer)
+{
+    console.log("test")
+    console.log(onePhotographer)
+
+    const { name, id, portrait, city, country, tagline, price } = onePhotographer;
+
+    const picture = `assets/photographers/${name}/${portrait}`;
+    
+    // Fonction de la création des cartes des photographes
+    const getPhotographePage = () => `
+                <div>
+
+                    <div class="">
+                        <h2>${name}</h2>
+                        <h3>${city}, ${country}</h3>
+                        <p class="tagline">${tagline}</p>
+                    </div>
+
+                    <div class="">
+                        Contactez moi
+                    </div>
+
+                    <div class="">
+                        <img src="${picture}" alt="Photo de ${name}">
+                    </div>
+
+                </div>`;
+
+    return { name, id, picture, city, country, tagline, price, getPhotographePage};
+}
