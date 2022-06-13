@@ -58,7 +58,7 @@ async function displayData(onePhotographer)
         // photographersSection.appendChild(userCardDOM);
         photographersSection.insertAdjacentHTML('beforeEnd', userCardDOM);
     });
-};
+}
 
 
 async function init()
