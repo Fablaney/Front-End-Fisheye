@@ -8,8 +8,10 @@ let idPhotograph = parsedUrl.searchParams.get("id")
 
 // console.log("id du photographe : " + idPhotograph);
 
+// Je convertis l'id en nombre
 idPhotograph = Number(idPhotograph)
 // console.log(typeof idPhotograph)
+// console.log(idPhotograph)
 
 
 // Je vais lire dans data les données des photographes sous forme de tableau / API / base de données
@@ -23,7 +25,8 @@ async function getPhotograph()
     let data = await response.json(); 
 
     // affiche les photographes en console
-    // console.log(data.photographers);
+    console.log("Tous le sphotographes : ");
+    console.log(data.photographers);
 
     // chere 1 photographe par son id
     const onePhotographer = data.photographers.find(x => x.id === idPhotograph);
@@ -62,4 +65,3 @@ async function init()
 }
 
 init();
-
