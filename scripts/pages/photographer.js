@@ -8,7 +8,7 @@ let idPhotograph = parsedUrl.searchParams.get("id")
 
 // Je convertis l'id en nombre
 idPhotograph = Number(idPhotograph)
-console.log("id du photographe : " + idPhotograph);
+// console.log("id du photographe : " + idPhotograph);
 // console.log(typeof idPhotograph)
 // console.log(idPhotograph)
 
@@ -22,19 +22,44 @@ async function getPhotographers()
     // lire le corps de réponse et analyser en JSON
     let photographers = await response.json()
 
-    // affiche les photographes en console
-    // console.log(photographers.photographers);
-
-    console.log("console du getphotographers")
-    console.log("affiche le photographe demandé")
+    // je vais chercher les infos de 1 photographe par son id passée en URL
     const onePhotographer = photographers.photographers.find(x => x.id === idPhotograph)
-    console.log(onePhotographer)
-
-    // affiche les medias en console
-    // console.log(photographers.media);
 
     return onePhotographer
 }
+
+// Récuperer les images de 1 photographe
+async function getPhotographeImage()
+{
+    // va chercher l'api
+    let response = await fetch('/data/photographers.json')
+
+    // lire le corps de réponse et analyser en JSON
+    let photographerMedias = await response.json()
+
+    // affiche les medias en console
+    console.log("console du getPhotographeImage")
+    // console.log("affiche tous les medias")
+    console.log(photographerMedias.media);
+
+
+    // je vais chercher les infos de 1 photographe par son id passée en URL
+    console.log("affiche les medias de 1 photographe")
+    // const mediasOfPhotographer = photographerMedias.media.find(x => x.photographerId === idPhotograph)
+
+
+    function dontlidest(value)
+    {
+        return value === idPhotograph;
+    }
+    var mediasOfPhotographer = photographerMedias.media.filter(dontlidest);
+ 
+
+    console.log(mediasOfPhotographer)
+
+    return mediasOfPhotographer
+}
+
 
 // Renvoie les données et les fait apparaitre dans le dom dans ".photograph-header"
 async function displayData(onePhotographer)
@@ -42,8 +67,8 @@ async function displayData(onePhotographer)
     // je selectionne le bloc html ou je vais afficher les infos 
     const photographersSection = document.querySelector(".photograph-header");
 
-    console.log("console du display data")
-    console.log(onePhotographer)
+    // console.log("console du display data ")
+    // console.log(onePhotographer)
 
     // je prend la fonction pour afficher les infos et je lui passe les données du photographe
     const photographerModel = photographerFactorySingle(onePhotographer);
@@ -52,19 +77,45 @@ async function displayData(onePhotographer)
 
     // j'insere le bloc dans la page html dans le bloc .photograph-header
     photographersSection.insertAdjacentHTML('beforeEnd', userCardDOM);
-
 }
 
+// Renvoie les medias pour 1 photographe
+// async function mediasWrapper(mediasOfPhotographer)
+// {
+//     // je selectionne le bloc html ou je vais afficher les infos 
+//     const mediasPhotographersSection = document.querySelector(".medias-wrapper");
+
+//     // console.log("console du medias wrapper")
+//     // console.log(mediasOfPhotographer)
+
+//     // Je boucle sur photographers pour afficher les medias
+//     mediasOfPhotographer.forEach((mediaOfPhotographer) => {
+//         // je prend la fonction pour afficher les infos et je lui passe les données du photographe
+//         const mediasPhotographerModel = photographerFactorySingle(mediaOfPhotographer);
+
+//         const userCardDOM = mediasPhotographerModel.getUserCardDOM();
+
+//         // j'insere le bloc dans la page html dans le bloc .medias-wrapper
+//         mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userCardDOM);
+//     });
+// }
 
 async function init()
 {
     // Récupère les datas du photographe
     const  onePhotographer  = await getPhotographers()
 
-    console.log("console du init")
-    console.log(onePhotographer)
-    
     displayData(onePhotographer)
+
+
+
+    const mediasOfPhotographer = await getPhotographeImage()
+
+    // console.log("console du init")
+    // console.log(mediasOfPhotographer)
+
+    // mediasWrapper(mediasOfPhotographer)
+
 }
 
 init();
