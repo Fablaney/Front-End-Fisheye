@@ -1,4 +1,4 @@
-// Fonction pour afficher les cards des photographes
+// Fonction pour afficher les cards de tous les photographes
 function photographerFactory(data)
 {
     const { name, id, portrait, city, country, tagline, price } = data;
@@ -22,7 +22,7 @@ function photographerFactory(data)
     return { name, id, picture, city, country, tagline, price, getUserCardDOM};
 }
 
-// Fonction pour afficher la page de 1 photographe
+// Fonction pour afficher le header de 1 photographe
 function photographerFactorySingle(data)
 {
     const { name, id, portrait, city, country, tagline, price } = data;
@@ -51,40 +51,21 @@ function photographerFactorySingle(data)
     return { name, id, picture, city, country, tagline, price, getUserCardDOM};
 }
 
-// Fonction pour afficher la page de 1 photographe
-function photographerFactoryImages(dataMedias, dataPhotographer)
+// Fonction pour afficher les medias de 1 photographe
+function photographerFactoryMedias(dataMedias, dataPhotographer)
 {
     const  {name } = dataPhotographer;
 
-    const { date, id, likes, photographerId, price, title, image } = dataMedias;
+    const { date, id, likes, photographerId, price, title, image, video } = dataMedias;
 
     const photo = `assets/photographers/${name}/${image}`;
 
     // Fonction de la création des cartes des photographes
-    const getImagesCardDOM = () => `
+    const getMediasCardDOM = () => `
         <div class="">
-            <img class="w-100" src="${photo}" alt="Photo de ${name}" lazy>
+            <img class="w-100" src="${photo}" alt="Photo de ${name}">
         </div>
         `;
 
-    return { name, date, id, likes, photographerId, price, title, image, getImagesCardDOM};
-}
-// Fonction pour afficher la page de 1 photographe
-function photographerFactoryVideo(dataVideo, dataPhotographer)
-{
-    const  {name } = dataPhotographer;
-
-    const { date, id, likes, photographerId, price, title, video } = dataVideo;
-
-    const film = `assets/photographers/${name}/${video}`;
-    
-    // Fonction de la création des cartes des photographes
-
-    const getVideoCardDOM = () => `
-        <div class="video-card">
-            <video src="${film}"></video>
-        </div>
-        `;         
-    
-    return { name, date, id, likes, photographerId, price, title, video, getVideoCardDOM};
+    return { name, date, id, likes, photographerId, price, title, image, video, getMediasCardDOM};
 }

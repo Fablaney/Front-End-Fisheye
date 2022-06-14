@@ -29,7 +29,7 @@ async function getPhotographers()
 }
 
 // Récuperer les images de 1 photographe
-async function getPhotographeImage()
+async function getPhotographeMedias()
 {
     // va chercher l'api
     let response = await fetch('/data/photographers.json')
@@ -45,7 +45,7 @@ async function getPhotographeImage()
     // je vais chercher les infos de 1 photographe par son id passée en URL
     // console.log("affiche les medias de 1 photographe")
     const mediasOfPhotographer = photographerMedias.media.filter(medias => medias.photographerId === idPhotograph);
-    // console.log(mediasOfPhotographer)
+    console.log(mediasOfPhotographer)
 
     return mediasOfPhotographer
 }
@@ -56,9 +56,6 @@ async function displayData(onePhotographer)
 {
     // je selectionne le bloc html ou je vais afficher les infos 
     const photographersSection = document.querySelector(".photograph-header");
-
-    // console.log("console du display data ")
-    // console.log(onePhotographer)
 
     // je prend la fonction pour afficher les infos et je lui passe les données du photographe
     const photographerModel = photographerFactorySingle(onePhotographer);
@@ -75,29 +72,15 @@ async function mediasWrapper(mediasOfPhotographer, onePhotographer)
     // je selectionne le bloc html ou je vais afficher les infos 
     const mediasPhotographersSection = document.querySelector(".medias-wrapper");
 
-    // console.log("console du medias wrapper")
-    // console.log(mediasOfPhotographer)
-
     // Je boucle sur photographers pour afficher les images
     mediasOfPhotographer.forEach((mediaOfPhotographer) => {
         // je prend la fonction pour afficher les infos et je lui passe les données du photographe
-        const mediasPhotographerModel = photographerFactoryImages(mediaOfPhotographer, onePhotographer);
+        const mediasPhotographerModel = photographerFactoryMedias(mediaOfPhotographer, onePhotographer);
 
-        const userImagesDOM = mediasPhotographerModel.getImagesCardDOM();
+        const userImagesDOM = mediasPhotographerModel.getMediasCardDOM();
 
         // j'insere le bloc dans la page html dans le bloc .medias-wrapper
         mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userImagesDOM);
-    });
-
-    // Je boucle sur photographers pour afficher les videos
-    mediasOfPhotographer.forEach((mediaOfPhotographer) => {
-        // je prend la fonction pour afficher les infos et je lui passe les données du photographe
-        const mediasPhotographerModel = photographerFactoryVideo(mediaOfPhotographer, onePhotographer);
-
-        const userVideosDOM = mediasPhotographerModel.getVideoCardDOM();
-
-        // j'insere le bloc dans la page html dans le bloc .medias-wrapper
-        mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userVideosDOM);
     });
 }
 
@@ -109,7 +92,7 @@ async function init()
     displayData(onePhotographer)
 
     // recupere les images du photographe
-    const mediasOfPhotographer = await getPhotographeImage()
+    const mediasOfPhotographer = await getPhotographeMedias()
 
     // console.log("console du init")
     // console.log(mediasOfPhotographer)
