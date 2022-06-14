@@ -92,7 +92,7 @@ async function mediasWrapper(mediasOfPhotographer, onePhotographer)
     // Je boucle sur photographers pour afficher les videos
     mediasOfPhotographer.forEach((mediaOfPhotographer) => {
         // je prend la fonction pour afficher les infos et je lui passe les données du photographe
-        const mediasPhotographerModel = photographerFactoryvideos(mediaOfPhotographer, onePhotographer);
+        const mediasPhotographerModel = photographerFactoryVideo(mediaOfPhotographer, onePhotographer);
 
         const userVideosDOM = mediasPhotographerModel.getVideoCardDOM();
 
