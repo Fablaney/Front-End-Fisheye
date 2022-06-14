@@ -4,7 +4,10 @@
 {
     border: 1px solid red;
 }
-
+*
+{
+    box-sizing: border-box;
+}
 body
 {
     font-family: "DM Sans", sans-serif;
@@ -40,15 +43,16 @@ h1
 .photograph-header
 {
     background-color: #FAFAFA;
-    margin: 0 100px;
     border-radius: 5px;
+
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-
-    margin-top: 30px;
-    padding: 70px 50px;
+  
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 0 70px;
 }
 .photograph-header>div
 {
@@ -74,5 +78,38 @@ h1
     border-radius: 200px;
     width: 200px;
     height: 200px !important;
+}
+
+/* affichage des images par photographe */
+.medias-wrapper
+{
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid red;
+
+    gap: 16px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.medias-wrapper>div
+{
+    display: flex;
+    flex: 1 350px;
+    height: 300px;
+    max-width: 350px;
+    object-fit: cover;
+}
+.medias-wrapper>div>img
+{
+    object-fit: cover;
+}
+
+.video-card
+{
+    display: flex;
+    flex: 1 350px;
+    height: 300px;
+    max-width: 350px;
+
 }
 

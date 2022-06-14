@@ -38,24 +38,14 @@ async function getPhotographeImage()
     let photographerMedias = await response.json()
 
     // affiche les medias en console
-    console.log("console du getPhotographeImage")
+    // console.log("console du getPhotographeImage")
     // console.log("affiche tous les medias")
-    console.log(photographerMedias.media);
-
+    // console.log(photographerMedias.media);
 
     // je vais chercher les infos de 1 photographe par son id passée en URL
-    console.log("affiche les medias de 1 photographe")
-    // const mediasOfPhotographer = photographerMedias.media.find(x => x.photographerId === idPhotograph)
-
-
-    function dontlidest(value)
-    {
-        return value === idPhotograph;
-    }
-    var mediasOfPhotographer = photographerMedias.media.filter(dontlidest);
- 
-
-    console.log(mediasOfPhotographer)
+    // console.log("affiche les medias de 1 photographe")
+    const mediasOfPhotographer = photographerMedias.media.filter(medias => medias.photographerId === idPhotograph);
+    // console.log(mediasOfPhotographer)
 
     return mediasOfPhotographer
 }
@@ -80,42 +70,51 @@ async function displayData(onePhotographer)
 }
 
 // Renvoie les medias pour 1 photographe
-// async function mediasWrapper(mediasOfPhotographer)
-// {
-//     // je selectionne le bloc html ou je vais afficher les infos 
-//     const mediasPhotographersSection = document.querySelector(".medias-wrapper");
+async function mediasWrapper(mediasOfPhotographer, onePhotographer)
+{
+    // je selectionne le bloc html ou je vais afficher les infos 
+    const mediasPhotographersSection = document.querySelector(".medias-wrapper");
 
-//     // console.log("console du medias wrapper")
-//     // console.log(mediasOfPhotographer)
+    // console.log("console du medias wrapper")
+    // console.log(mediasOfPhotographer)
 
-//     // Je boucle sur photographers pour afficher les medias
-//     mediasOfPhotographer.forEach((mediaOfPhotographer) => {
-//         // je prend la fonction pour afficher les infos et je lui passe les données du photographe
-//         const mediasPhotographerModel = photographerFactorySingle(mediaOfPhotographer);
+    // Je boucle sur photographers pour afficher les images
+    mediasOfPhotographer.forEach((mediaOfPhotographer) => {
+        // je prend la fonction pour afficher les infos et je lui passe les données du photographe
+        const mediasPhotographerModel = photographerFactoryImages(mediaOfPhotographer, onePhotographer);
 
-//         const userCardDOM = mediasPhotographerModel.getUserCardDOM();
+        const userImagesDOM = mediasPhotographerModel.getImagesCardDOM();
 
-//         // j'insere le bloc dans la page html dans le bloc .medias-wrapper
-//         mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userCardDOM);
-//     });
-// }
+        // j'insere le bloc dans la page html dans le bloc .medias-wrapper
+        mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userImagesDOM);
+    });
+
+    // Je boucle sur photographers pour afficher les videos
+    mediasOfPhotographer.forEach((mediaOfPhotographer) => {
+        // je prend la fonction pour afficher les infos et je lui passe les données du photographe
+        const mediasPhotographerModel = photographerFactoryvideos(mediaOfPhotographer, onePhotographer);
+
+        const userVideosDOM = mediasPhotographerModel.getVideoCardDOM();
+
+        // j'insere le bloc dans la page html dans le bloc .medias-wrapper
+        mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userVideosDOM);
+    });
+}
 
 async function init()
 {
     // Récupère les datas du photographe
-    const  onePhotographer  = await getPhotographers()
+    const onePhotographer = await getPhotographers()
 
     displayData(onePhotographer)
 
-
-
+    // recupere les images du photographe
     const mediasOfPhotographer = await getPhotographeImage()
 
     // console.log("console du init")
     // console.log(mediasOfPhotographer)
 
-    // mediasWrapper(mediasOfPhotographer)
-
+    mediasWrapper(mediasOfPhotographer, onePhotographer)
 }
 
 init();
