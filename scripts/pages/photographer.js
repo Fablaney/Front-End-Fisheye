@@ -17,7 +17,7 @@ async function getPhotographers()
 
     // lire le corps de réponse et analyser en JSON
     let photographers = await response.json()
-
+    dbg(photographers)
     // je vais chercher les infos de 1 photographe par son id passée en URL
     const onePhotographer = photographers.photographers.find(x => x.id === idPhotograph)
 
