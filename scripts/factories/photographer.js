@@ -54,18 +54,58 @@ function photographerFactorySingle(data)
 // Fonction pour afficher les medias de 1 photographe
 function photographerFactoryMedias(dataMedias, dataPhotographer)
 {
-    const  {name } = dataPhotographer;
+    const { name } = dataPhotographer;
 
-    const { date, id, likes, photographerId, price, title, image, video } = dataMedias;
+    const { date, id, photographerId, price, title, image, video, likes } = dataMedias;
 
-    const photo = `assets/photographers/${name}/${image}`;
+    const img = `assets/photographers/${name}/${image}`;
+    const vid = `assets/photographers/${name}/${video}`;
+
+    // console.log("console du factory media")
+    // console.log( image )
+    // console.log( video )
+
+    // if ( image == true )
+    // {
+
+    //     const getImagesCardDOM = () => `
+    //     <div class="img-card">
+    //         <img class="w-100" src="${img}" alt="Photo de ${name}">
+    //     </div>
+    //     `;
+
+    //     return { name, date, id, likes, photographerId, price, title, image, likes, getImagesCardDOM};
+    // }
+    // if ( video == true )
+    // {
+    //     const getVideosCardDOM = () => `
+    //     <div class="video-card">
+    //         <video src="${vid}" controls></video>
+    //     </div>
+    //     `;
+
+    //     return { name, date, id, likes, photographerId, price, title, video, likes, getVideosCardDOM};
+    // }
 
     // Fonction de la création des cartes des photographes
     const getMediasCardDOM = () => `
-        <div class="">
-            <img class="w-100" src="${photo}" alt="Photo de ${name}">
+        <div class="medias-cards">
+
+            <div class="img-vid">
+                <img class="w-100" src="${img}" alt="Photo de ${name}">
+            </div>
+
+            <div class="name-likes">
+                <div class="title">
+                    ${title}
+                </div>
+                <div class="likes">
+                    ${likes} <i class="fas fa-heart"></i>
+                </div>
+            </div>
+            
         </div>
         `;
 
-    return { name, date, id, likes, photographerId, price, title, image, video, getMediasCardDOM};
+    return { name, date, id, photographerId, price, title, image, video, likes, getMediasCardDOM };
 }

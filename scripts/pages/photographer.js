@@ -77,10 +77,12 @@ async function mediasWrapper(mediasOfPhotographer, onePhotographer)
         // je prend la fonction pour afficher les infos et je lui passe les données du photographe
         const mediasPhotographerModel = photographerFactoryMedias(mediaOfPhotographer, onePhotographer);
 
-        const userImagesDOM = mediasPhotographerModel.getMediasCardDOM();
+        const userMediasDOM = mediasPhotographerModel.getMediasCardDOM();
+        // const userImagesDOM = mediasPhotographerModel.getImagesCardDOM();
+        // const userVideosDOM = mediasPhotographerModel.getVideosCardDOM();
 
         // j'insere le bloc dans la page html dans le bloc .medias-wrapper
-        mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userImagesDOM);
+        mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userMediasDOM, );
     });
 }
 

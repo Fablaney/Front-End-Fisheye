@@ -85,7 +85,6 @@ h1
 {
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid red;
 
     gap: 16px;
     margin-top: 50px;
@@ -95,21 +94,45 @@ h1
 {
     display: flex;
     flex: 1 350px;
+    /* height: 300px; */
+    max-width: 350px;
+}
+.medias-cards
+{
+    display: flex;
+    flex-direction: column;
+}
+.img-vid>img
+{
     height: 300px;
     max-width: 350px;
     object-fit: cover;
 }
-.medias-wrapper>div>img
+.name-likes
 {
-    object-fit: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
-
+.title
+{
+    font-size: 24px;
+    color: #901C1C;
+}
+.likes
+{
+    font-size: 24px;
+    color: #901C1C;
+}
+.fa-heart
+{
+    font-size: 24px;
+    color: #901C1C;
+}
 .video-card
 {
     display: flex;
     flex: 1 350px;
     height: 300px;
     max-width: 350px;
-
 }
-
