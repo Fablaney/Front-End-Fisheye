@@ -193,10 +193,15 @@ select:focus, select:active
 
     font-size: 24px;
     font-weight: 500;
+    /* line-height: 0px; */
+}
+.total-likes
+{
+    margin-right: 3rem;
+    line-height: 22px;
 }
 .total-likes, .total-likes>i
 {
     display: flex;
-    margin-right: 68px;
     color: black !important;
 }
