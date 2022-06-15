@@ -86,10 +86,10 @@ async function photographerLikes(onePhotographer, mediasOfPhotographer)
     // je prend la fonction pour afficher les infos et je lui passe les données du photographe
     const likesPhotographer = photographerFactoryLikes(onePhotographer, mediasOfPhotographer);
 
-    const mediasDOM = likesPhotographer.getLikesDOM();
+    const likesDOM = likesPhotographer.getLikesdDOM();
 
     // j'insere le bloc dans la page html dans le bloc .medias-wrapper
-    mediasPhotographersSection.insertAdjacentHTML('beforeEnd', mediasDOM,);
+    mediasPhotographersSection.insertAdjacentHTML('beforeEnd', likesDOM,);
 }
 
 async function init()

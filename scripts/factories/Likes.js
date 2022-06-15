@@ -6,7 +6,7 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
     const { id, likes } = dataMedias
 
 
-    dbg(totalikes)
+    // dbg(totalikes)
 
     // Fonction de la création des cartes des photographes
     const getLikesdDOM = () => `
