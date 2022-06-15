@@ -52,10 +52,6 @@ h1
     flex-direction: column;
 }
 /* image de portrait du photographe */
-/* .photographer_section article img
-{
-    
-} */
 .portrait
 {
     object-fit: cover;

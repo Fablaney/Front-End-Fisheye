@@ -1,6 +1,6 @@
 //Mettre le code JavaScript lié à la page photographer.html
 
-// https://some.site/?id=123
+// https://url-mon-site/?id=123
 // Je récupere l'url
 let parsedUrl = new URL(window.location.href);
 // Je récupere uniquement l'id et je la transfere dans une variable 
@@ -8,10 +8,6 @@ let idPhotograph = parsedUrl.searchParams.get("id")
 
 // Je convertis l'id en nombre
 idPhotograph = Number(idPhotograph)
-// console.log("id du photographe : " + idPhotograph);
-// console.log(typeof idPhotograph)
-// console.log(idPhotograph)
-
 
 // Je vais lire dans data les données des photographes sous forme de tableau / API / base de données
 async function getPhotographers()
@@ -37,15 +33,10 @@ async function getPhotographeMedias()
     // lire le corps de réponse et analyser en JSON
     let photographerMedias = await response.json()
 
-    // affiche les medias en console
-    // console.log("console du getPhotographeImage")
-    // console.log("affiche tous les medias")
-    // console.log(photographerMedias.media);
-
     // je vais chercher les infos de 1 photographe par son id passée en URL
     // console.log("affiche les medias de 1 photographe")
     const mediasOfPhotographer = photographerMedias.media.filter(medias => medias.photographerId === idPhotograph);
-    console.log(mediasOfPhotographer)
+    // console.log(mediasOfPhotographer)
 
     return mediasOfPhotographer
 }
@@ -98,13 +89,7 @@ async function photographerLikes(onePhotographer, mediasOfPhotographer)
     const mediasDOM = likesPhotographer.getLikesDOM();
 
     // j'insere le bloc dans la page html dans le bloc .medias-wrapper
-    mediasPhotographersSection.insertAdjacentHTML('beforeEnd', mediasDOM, this.Likes);
- 
-    // Likes Counter
-    this.Likes = new Likes()
-    this.LikesCounter = new LikesCounter()
-
-    this.Likes.addLike(this.LikesCounter)
+    mediasPhotographersSection.insertAdjacentHTML('beforeEnd', mediasDOM,);
 }
 
 async function init()

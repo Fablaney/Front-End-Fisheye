@@ -7,11 +7,6 @@ async function getPhotographers()
     // lire le corps de réponse et analyser en JSON
     let photographers = await response.json(); 
 
-    // affiche les photographes en console
-    // console.log(photographers.photographers);
-    // affiche les medias en console
-    // console.log(photographers.media);
-
     return photographers
 }
 
@@ -38,9 +33,7 @@ async function init()
 {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
-    console.log("console du init");
-    console.log(photographers);
-    
+
     displayData(photographers);
 }
 
