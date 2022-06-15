@@ -171,6 +171,10 @@ select:focus, select:active
     font-size: 24px;
     color: #901C1C;
 }
+.addlike
+{
+    cursor: pointer;
+}
 .video-card
 {
     display: flex;

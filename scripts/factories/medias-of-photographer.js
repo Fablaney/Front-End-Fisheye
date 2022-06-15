@@ -21,7 +21,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                     ${title}
                 </div>
                 <div class="likes">
-                    ${likes} <i class="fas fa-heart"></i>
+                    ${likes} <i class="fas fa-heart addlike" onclick="addordislike()"></i>
                 </div>
             </div>
             
