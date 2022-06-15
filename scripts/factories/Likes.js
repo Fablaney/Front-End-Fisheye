@@ -9,8 +9,7 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
     dbg(totalikes)
 
     // Fonction de la création des cartes des photographes
-    function getLikesDOM() {
-        return `
+    const getLikesdDOM = () => `
             <div class="total-likes">
 
                 <div class="likes-count mr-2">   
@@ -27,7 +26,6 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
 
             </div>
             `;
-    }
     
-    return { id, likes, price, getLikesDOM};
+    return { id, likes, price, getLikesdDOM};
 }
