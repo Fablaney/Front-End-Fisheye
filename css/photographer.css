@@ -105,15 +105,16 @@ select
     padding: 22px;
     border-radius: 5px;
 }
+select:hover
+{
+    cursor: pointer;
+}
 select:focus, select:active
 {
     border: none;
     outline: none;
 }
-.option
-{
-    border-bottom: 1px solid white;
-}
+
 
 
 
