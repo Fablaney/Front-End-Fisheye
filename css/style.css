@@ -52,8 +52,13 @@ h1
     flex-direction: column;
 }
 /* image de portrait du photographe */
-.photographer_section article img
+/* .photographer_section article img
 {
+    
+} */
+.portrait
+{
+    object-fit: cover;
     height: 200px;
     width: 200px;
     border-radius: 200px;

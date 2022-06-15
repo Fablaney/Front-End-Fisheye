@@ -86,20 +86,45 @@ async function mediasWrapper(mediasOfPhotographer, onePhotographer)
     });
 }
 
+// Renvoie les likes pour 1 photographe
+async function photographerLikes(onePhotographer, mediasOfPhotographer)
+{
+    // je selectionne le bloc html ou je vais afficher les infos 
+    const mediasPhotographersSection = document.querySelector(".likes-wrapper");
+
+    // je prend la fonction pour afficher les infos et je lui passe les données du photographe
+    const likesPhotographer = photographerFactoryLikes(onePhotographer, mediasOfPhotographer);
+
+    const mediasDOM = likesPhotographer.getLikesDOM();
+
+    // j'insere le bloc dans la page html dans le bloc .medias-wrapper
+    mediasPhotographersSection.insertAdjacentHTML('beforeEnd', mediasDOM, this.Likes);
+ 
+    // Likes Counter
+    this.Likes = new Likes()
+    this.LikesCounter = new LikesCounter()
+
+    this.Likes.addLike(this.LikesCounter)
+}
+
 async function init()
 {
     // Récupère les datas du photographe
     const onePhotographer = await getPhotographers()
-
-    displayData(onePhotographer)
-
     // recupere les images du photographe
     const mediasOfPhotographer = await getPhotographeMedias()
 
+    // afficher el header du photographe
+    displayData(onePhotographer)
+
+    // affiche le simages du photographe
+    mediasWrapper(mediasOfPhotographer, onePhotographer)
+
+    // affiche les likes du photographe
+    photographerLikes(onePhotographer, mediasOfPhotographer)
+
     // console.log("console du init")
     // console.log(mediasOfPhotographer)
-
-    mediasWrapper(mediasOfPhotographer, onePhotographer)
 }
 
 init();

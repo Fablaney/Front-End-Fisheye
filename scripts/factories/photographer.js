@@ -9,7 +9,7 @@ function photographerFactory(data)
     const getUserCardDOM = () => `
                 <article>
                     <a href="photographer.html?id=${id}">
-                        <img src="${picture}" alt="Photo de ${name}">
+                        <img class="portrait" src="${picture}" alt="Photo de ${name}">
                     </a>
                     <div class="info">
                         <h2>${name}</h2>
@@ -43,7 +43,7 @@ function photographerFactorySingle(data)
 
                 <div class="justify-center">
                     <a class="single-photograph-img" href="photographer.html?id=${id}">
-                        <img src="${picture}" alt="Photo de ${name}">
+                        <img class="portrait" src="${picture}" alt="Photo de ${name}">
                     </a>
                 </div>
               `;
@@ -108,4 +108,36 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
         `;
 
     return { name, date, id, photographerId, price, title, image, video, likes, getMediasCardDOM };
+}
+
+
+// Fonction pour afficher les cards de tous les photographes
+function photographerFactoryLikes(dataPhotographer, dataMedias)
+{
+    const { price } = dataPhotographer;
+
+    const { id, likes } = dataMedias;
+
+
+    // Fonction de la création des cartes des photographes
+    const getLikesDOM = () => `
+               
+                    <div class="total-likes">
+
+                        <div class="likes-count mr-2">   
+                            ${likes} 
+                        </div>
+
+                        <i class="fas fa-heart"></i>
+
+                    </div>
+
+                    <div class="price">
+
+                        <div class="price">${price}€/jour</div>   
+    
+                    </div>
+                `;
+    
+    return { id, likes, price, getLikesDOM};
 }
