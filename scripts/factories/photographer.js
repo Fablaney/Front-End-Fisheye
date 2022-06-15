@@ -61,32 +61,6 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
     const img = `assets/photographers/${name}/${image}`;
     const vid = `assets/photographers/${name}/${video}`;
 
-    // console.log("console du factory media")
-    // console.log( image )
-    // console.log( video )
-
-    // if ( image == true )
-    // {
-
-    //     const getImagesCardDOM = () => `
-    //     <div class="img-card">
-    //         <img class="w-100" src="${img}" alt="Photo de ${name}">
-    //     </div>
-    //     `;
-
-    //     return { name, date, id, likes, photographerId, price, title, image, likes, getImagesCardDOM};
-    // }
-    // if ( video == true )
-    // {
-    //     const getVideosCardDOM = () => `
-    //     <div class="video-card">
-    //         <video src="${vid}" controls></video>
-    //     </div>
-    //     `;
-
-    //     return { name, date, id, likes, photographerId, price, title, video, likes, getVideosCardDOM};
-    // }
-
     // Fonction de la création des cartes des photographes
     const getMediasCardDOM = () => `
         <div class="medias-cards">
@@ -121,23 +95,22 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
 
     // Fonction de la création des cartes des photographes
     const getLikesDOM = () => `
-               
-                    <div class="total-likes">
+            <div class="total-likes">
 
-                        <div class="likes-count mr-2">   
-                            ${likes} 
-                        </div>
+                <div class="likes-count mr-2">   
+                    ${likes} 
+                </div>
 
-                        <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
 
-                    </div>
+            </div>
 
-                    <div class="price">
+            <div class="price">
 
-                        <div class="price">${price}€/jour</div>   
-    
-                    </div>
-                `;
+                <div class="price">${price}€/jour</div>   
+
+            </div>
+            `;
     
     return { id, likes, price, getLikesDOM};
 }
