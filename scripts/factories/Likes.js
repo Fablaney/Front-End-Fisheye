@@ -3,12 +3,10 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
 {
     const { price } = dataPhotographer
 
-    // const { id, likes } = dataMedias
+    const { id, likes } = dataMedias
 
-    // const likes = dataMedias
-    let totalikes = 0
-    totalikes = likes.concat(dataMedias)
-    dbg(totalikes);
+
+    dbg(totalikes)
 
     // Fonction de la création des cartes des photographes
     function getLikesDOM() {
