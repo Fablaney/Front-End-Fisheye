@@ -17,7 +17,7 @@ async function getPhotographers()
 
     // lire le corps de réponse et analyser en JSON
     let photographers = await response.json()
-
+    // dbg(photographers)
     // je vais chercher les infos de 1 photographe par son id passée en URL
     const onePhotographer = photographers.photographers.find(x => x.id === idPhotograph)
 
@@ -68,14 +68,14 @@ async function mediasWrapper(mediasOfPhotographer, onePhotographer)
         // je prend la fonction pour afficher les infos et je lui passe les données du photographe
         const mediasPhotographerModel = photographerFactoryMedias(mediaOfPhotographer, onePhotographer);
 
-        // j'utilise la fonction qui crée le bloc html
         const userMediasDOM = mediasPhotographerModel.getMediasCardDOM();
+        // const userImagesDOM = mediasPhotographerModel.getImagesCardDOM();
+        // const userVideosDOM = mediasPhotographerModel.getVideosCardDOM();
 
         // j'insere le bloc dans la page html dans le bloc .medias-wrapper
         mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userMediasDOM, );
     });
 }
-
 
 // Renvoie les likes pour 1 photographe
 async function photographerLikes(onePhotographer, mediasOfPhotographer)
@@ -99,10 +99,10 @@ async function init()
     // recupere les images du photographe
     const mediasOfPhotographer = await getPhotographeMedias()
 
-    // afficher el header du photographe
+    // afficher le header du photographe
     displayData(onePhotographer)
 
-    // affiche le simages du photographe
+    // affiche les images du photographe
     mediasWrapper(mediasOfPhotographer, onePhotographer)
 
     // affiche les likes du photographe

@@ -3,31 +3,20 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
 {
     const { price } = dataPhotographer
 
-    const { likes } = dataMedias
+    let dataMediasLikes = dataMedias
 
-    dbg(dataMedias)
+    dbg(dataMediasLikes)
 
-    // addition des likes
-    const totalLikes = 0;
+    let totalLikes = 0
+    dbg("Total de likes = " + totalLikes)
 
     // Je boucle sur dataMedias pour récuperer le nombre de lignes
-    dataMedias.forEach((dataMedia) => {
-
-        dbg(dataMedia.likes)
-        let totalLikes = dataMedia.likes
-
-        return totalLikes
-
+    dataMediasLikes.forEach((dataMedialike) => {
+        // dbg(dataMedialike.likes)
+        totalLikes += dataMedialike.like
     });
 
-    const sumOfLikes = totalLikes.reduce(
-            (previousValue, currentValue) => previousValue + currentValue,
-            totalLikes
-    );
-    
-    dbg("Sum Ok Likes :" + sumOfLikes)
-
-    // dbg(totalikes)
+    dbg("Total likes = " + totalLikes)
 
     // Fonction de la création des cartes des photographes
     const getLikesdDOM = () => `
