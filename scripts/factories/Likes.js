@@ -12,7 +12,12 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
 
     // Je boucle sur dataMedias pour récuperer le nombre de lignes
     dataMediasLikes.forEach((dataMedialike) => {
-        // dbg(dataMedialike.likes)
+
+        dbg( dataMedialike.likes )
+        dbg( typeof(dataMedialike.likes) )
+
+        dataMedialike.likes = Number(dataMedialike.likes)
+
         totalLikes += dataMedialike.like
     });
 
