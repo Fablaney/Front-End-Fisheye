@@ -14,16 +14,15 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
     dataMediasLikes.forEach((dataMedialike) => {
 
         dbg( dataMedialike.likes )
-        // dbg( typeof(dataMedialike.likes) )
-
-        // dataMedialike.likes = Number(dataMedialike.likes)
-
+   
         totalLikes += dataMedialike.like
     });
 
     dbg("Total likes = " + totalLikes)
 
     let likes = totalLikes
+
+    dbg( typeof(likes) )
 
     // Fonction de la création des cartes des photographes
     const getLikesdDOM = () => `
