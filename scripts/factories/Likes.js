@@ -3,8 +3,29 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
 {
     const { price } = dataPhotographer
 
-    const { id, likes } = dataMedias
+    const { likes } = dataMedias
 
+    dbg(dataMedias)
+
+    // addition des likes
+    const totalLikes = 0;
+
+    // Je boucle sur dataMedias pour récuperer le nombre de lignes
+    dataMedias.forEach((dataMedia) => {
+
+        dbg(dataMedia.likes)
+        let totalLikes = dataMedia.likes
+
+        return totalLikes
+
+    });
+
+    const sumOfLikes = totalLikes.reduce(
+            (previousValue, currentValue) => previousValue + currentValue,
+            totalLikes
+    );
+    
+    dbg("Sum Ok Likes :" + sumOfLikes)
 
     // dbg(totalikes)
 
@@ -27,5 +48,5 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
             </div>
             `;
     
-    return { id, likes, price, getLikesdDOM};
+    return { likes, price, getLikesdDOM};
 }

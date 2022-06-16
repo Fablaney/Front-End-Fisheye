@@ -16,8 +16,8 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
 
                     <div class="vid">
                        
-                        <video controls>
-                            <source src="${vid}" type="video/mp4" controls>
+                        <video src="${vid}" type="video/mp4" controls>
+                         
                         </video>
                     </div>
 
@@ -53,27 +53,6 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                 </div>`
         ;}
     }
-
-
-
-    /* const getMediasCardDOM = () => `
-        <div class="medias-cards">
-
-            <div class="img-vid">
-                <img class="w-100" src="${img}" alt="Photo de ${name}">
-            </div>
-
-            <div class="name-likes">
-                <div class="title">
-                    ${title}
-                </div>
-                <div class="likes">
-                    ${likes} <i class="fas fa-heart addlike" onclick="addordislike()"></i>
-                </div>
-            </div>
-            
-        </div>
-        `; */
 
     return { name, date, id, photographerId, price, title, image, video, likes, getMediasCardDOM };
 }
