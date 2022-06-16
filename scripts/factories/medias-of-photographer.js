@@ -7,7 +7,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
 
     const img = `assets/photographers/${name}/${image}`;
     const vid = `assets/photographers/${name}/${video}`;
-
+  
     // Fonction de la création des cartes des photographes
     const getMediasCardDOM = () => {
         if(video !== undefined){
@@ -25,8 +25,9 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                         <div class="title">
                             ${title}
                         </div>
-                        <div class="likes">
-                            ${likes} <i class="fas fa-heart addlike" onclick="addordislike()"></i>
+
+                        <div class="likes" id="likes-${id}">
+                            ${likes} <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"></i>
                         </div>
                     </div>
                     
@@ -45,8 +46,9 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                         <div class="title">
                             ${title}
                         </div>
-                        <div class="likes">
-                            ${likes} <i class="fas fa-heart addlike" onclick="addordislike()"></i>
+
+                        <div class="likes" id="likes-${id}">
+                            ${likes} <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"></i>
                         </div>
                     </div>
                     
