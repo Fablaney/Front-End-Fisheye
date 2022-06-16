@@ -24,7 +24,7 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
     dbg("Total likes = " + totalLikes)
 
     let likes = totalLikes
-    
+
     // Fonction de la création des cartes des photographes
     const getLikesdDOM = () => `
             <div class="total-likes">
