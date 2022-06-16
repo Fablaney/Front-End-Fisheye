@@ -143,7 +143,14 @@ select:focus, select:active
     flex-direction: column;
     margin-bottom: 20px;
 }
-.img-vid>img
+.img>img
+{
+    height: 300px;
+    max-width: 350px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.vid>video
 {
     height: 300px;
     max-width: 350px;
