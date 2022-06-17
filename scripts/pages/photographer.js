@@ -123,7 +123,7 @@ init();
 function addordislike(id)
 {
     // soluce 1
-    // let media = mediasOfPhotographer.find(media_photographer => media_photographer.id == id)
+    let media = mediasOfPhotographer.find(media_photographer => media_photographer.id == id)
 
     // soluce 2
     // let media = mediasOfPhotographer.find((media_photographer) => {
@@ -131,11 +131,11 @@ function addordislike(id)
     // })
 
     // soluce 3
-    let media = mediasOfPhotographer.find(
-    function(media_photographer)
-    {
-        return media_photographer.id == id
-    })
+    // let media = mediasOfPhotographer.find(
+    // function(media_photographer)
+    // {
+    //     return media_photographer.id == id
+    // })
 
     // dbg("je rentre dans la fonction")
     // dbg("je récupere id = " + id)
@@ -165,4 +165,25 @@ function addordislike(id)
 
     // dbg("j'ajoute + 1 aux likes de l'image ")
     document.querySelector("#likes-" + id + " span").innerText = media.likes
+}
+
+// Fonction SORT BY
+function sortBy(value)
+{
+    // dbg("j'ajoute + 1 aux likes de l'image ")
+    dbg("Je récupere la valeur du select = " + value)
+
+    if (value === "popularite")
+    {
+        dbg("Je trie par popularité")
+        
+    }
+    if (value === "date")
+    {
+        dbg("Je trie par date")
+    }
+    if (value === "titre")
+    {
+        dbg("Je trie par titre")
+    }
 }

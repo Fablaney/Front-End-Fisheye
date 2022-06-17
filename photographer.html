@@ -38,7 +38,7 @@
 
             <div class="trier-par">Trier par</div>
 
-            <select name="sortby" id="sort-page">
+            <select name="sortby" id="sort-page" onchange="sortBy(value)">
                 <option class="option" value="popularite">Popularite</option>
                 <option class="option" value="date">Date</option>
                 <option class="option" value="titre">Titre</option>
@@ -84,8 +84,6 @@
     </div>
 
     <script src="/scripts/utils/contactForm.js"></script>
-
-    <script src="scripts/utils/likes.js"></script> 
 
     <script src="scripts/factories/photographers.js"></script>
 
