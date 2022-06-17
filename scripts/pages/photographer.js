@@ -167,23 +167,35 @@ function addordislike(id)
     document.querySelector("#likes-" + id + " span").innerText = media.likes
 }
 
+
 // Fonction SORT BY
 function sortBy(value)
 {
-    // dbg("j'ajoute + 1 aux likes de l'image ")
     dbg("Je récupere la valeur du select = " + value)
 
-    if (value === "popularite")
-    {
-        dbg("Je trie par popularité")
-        
-    }
-    if (value === "date")
-    {
-        dbg("Je trie par date")
-    }
-    if (value === "titre")
-    {
-        dbg("Je trie par titre")
-    }
+    dbg("Je récupere les medias du photographe")
+    dbg(mediasOfPhotographer)
+
+
+    dbg("Je trie par" + value)
+
+    let mediasSorteds = mediasOfPhotographer.value.sort(x => x)
+
+    dbg(mediasSorteds)
+
+    // je selectionne le bloc html ou je vais re-afficher les medias triés par ... 
+    // const mediasPhotographersSection = document.querySelector(".medias-wrapper");
+
+    // // Je boucle sur photographers pour afficher les images
+    // mediasSorteds.forEach((mediasSorteds) => {
+    //     // je prend la fonction pour afficher les infos et je lui passe les données du photographe
+    //     const mediasPhotographerModel = photographerFactoryMedias(mediasSorteds, onePhotographer);
+
+    //     const userMediasDOM = mediasPhotographerModel.getMediasCardDOM();
+    //     // const userImagesDOM = mediasPhotographerModel.getImagesCardDOM();
+    //     // const userVideosDOM = mediasPhotographerModel.getVideosCardDOM();
+
+    //     // j'insere le bloc dans la page html dans le bloc .medias-wrapper
+    //     mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userMediasDOM, );
+    // });
 }
