@@ -119,7 +119,7 @@ async function init()
 
 init();
 
-
+// Fonction pour ajouter/supprimer un like
 function addordislike(id)
 {
     // soluce 1
@@ -137,34 +137,32 @@ function addordislike(id)
         return media_photographer.id == id
     })
 
-
-    dbg("je rentre dans la fonction")
-    dbg("je récupere id = " + id)
+    // dbg("je rentre dans la fonction")
+    // dbg("je récupere id = " + id)
 
     if (document.querySelector("#likes-" + id + " i").classList.contains("liked"))
     {
-        dbg("c'est déja liké")
+        // dbg("c'est déja liké je supprime 1")
         media.likes--
 
-        dbg("j'ajoute la class liked au coeur ")
+        // dbg("je supprime la class liked au coeur ")
         document.querySelector("#likes-" + id + " i").classList.remove("liked")
 
-        dbg("j'ajoute + 1 au compte global")
+        // dbg("j'enleve - 1 au compte global")
         document.querySelector(".likes-count").innerHTML--
     }
     else
     {
-        dbg("c'est pas liké")
+        // dbg("c'est pas liké j'ajoute 1")
         media.likes++
 
-        dbg("j'ajoute la class liked au coeur ")
+        // dbg("j'ajoute la class liked au coeur ")
         document.querySelector("#likes-" + id + " i").classList.add("liked")
 
-        dbg("j'ajoute + 1 au compte global")
+        // dbg("j'ajoute + 1 au compte global")
         document.querySelector(".likes-count").innerHTML++
     }
 
-    dbg("j'ajoute + 1 aux likes de l'image ")
+    // dbg("j'ajoute + 1 aux likes de l'image ")
     document.querySelector("#likes-" + id + " span").innerText = media.likes
-
 }
