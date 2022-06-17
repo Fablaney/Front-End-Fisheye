@@ -21,7 +21,7 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
 
     // soluce 2 less is more
     // filtrer et ajouter chaque dataMedialike.likes à totalLikes
-    dataMedias.filter(dataMedialike => { totalLikes += dataMedialike.likes });
+    dataMedias.forEach(dataMedialike => { totalLikes += dataMedialike.likes });
 
     // dbg("Total likes = " + totalLikes)
 

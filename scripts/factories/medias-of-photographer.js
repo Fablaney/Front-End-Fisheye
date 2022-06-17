@@ -4,13 +4,13 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
     const { name } = dataPhotographer;
     const { date, id, photographerId, price, title, image, video, likes } = dataMedias;
 
-    dbg( dataMedias.likes)
+    // dbg( dataMedias)
     
   
-    dbg( dataMedias.likes)
+    // dbg( dataMedias.likes)
 
-    dbg(typeof({likes}))
-    dbg(typeof(likes))
+    // dbg(typeof({likes}))
+    // dbg(typeof(likes))
 
     const img = `assets/photographers/${name}/${image}`;
     const vid = `assets/photographers/${name}/${video}`;
@@ -31,7 +31,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                         </div>
 
                         <div class="likes" id="likes-${id}">
-                            ${likes} <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"></i>
+                        <span>${likes}</span> <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"></i>
                         </div>
                     </div>
                     
@@ -52,7 +52,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                         </div>
 
                         <div class="likes" id="likes-${id}">
-                            ${likes} <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"></i>
+                            <span>${likes}</span> <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"></i>
                         </div>
                     </div>
                     

@@ -9,6 +9,11 @@ let idPhotograph = parsedUrl.searchParams.get("id")
 // Je convertis l'id en nombre
 idPhotograph = Number(idPhotograph)
 
+let onePhotographer = {}
+
+let mediasOfPhotographer = []
+
+
 // Je vais lire dans data les données des photographes sous forme de tableau / API / base de données
 async function getPhotographers()
 {
@@ -19,7 +24,7 @@ async function getPhotographers()
     let photographers = await response.json()
     // dbg(photographers)
     // je vais chercher les infos de 1 photographe par son id passée en URL
-    const onePhotographer = photographers.photographers.find(x => x.id === idPhotograph)
+    onePhotographer = photographers.photographers.find(x => x.id === idPhotograph)
 
     return onePhotographer
 }
@@ -35,7 +40,7 @@ async function getPhotographeMedias()
 
     // je vais chercher les infos de 1 photographe par son id passée en URL
     // console.log("affiche les medias de 1 photographe")
-    const mediasOfPhotographer = photographerMedias.media.filter(medias => medias.photographerId === idPhotograph);
+    mediasOfPhotographer = photographerMedias.media.filter(medias => medias.photographerId === idPhotograph);
     // console.log(mediasOfPhotographer)
 
     return mediasOfPhotographer
@@ -43,7 +48,7 @@ async function getPhotographeMedias()
 
 
 // Renvoie les données et les fait apparaitre dans le dom dans ".photograph-header"
-async function displayData(onePhotographer)
+async function displayHeader()
 {
     // je selectionne le bloc html ou je vais afficher les infos 
     const photographersSection = document.querySelector(".photograph-header");
@@ -58,7 +63,7 @@ async function displayData(onePhotographer)
 }
 
 // Renvoie les medias pour 1 photographe
-async function mediasWrapper(mediasOfPhotographer, onePhotographer)
+async function mediasWrapper()
 {
     // je selectionne le bloc html ou je vais afficher les infos 
     const mediasPhotographersSection = document.querySelector(".medias-wrapper");
@@ -78,7 +83,7 @@ async function mediasWrapper(mediasOfPhotographer, onePhotographer)
 }
 
 // Renvoie les likes pour 1 photographe
-async function photographerLikes(onePhotographer, mediasOfPhotographer)
+async function photographerLikes()
 {
     // je selectionne le bloc html ou je vais afficher les infos 
     const mediasPhotographersSection = document.querySelector(".likes-wrapper");
@@ -95,21 +100,71 @@ async function photographerLikes(onePhotographer, mediasOfPhotographer)
 async function init()
 {
     // Récupère les datas du photographe
-    const onePhotographer = await getPhotographers()
+    await getPhotographers()
     // recupere les images du photographe
-    const mediasOfPhotographer = await getPhotographeMedias()
+    await getPhotographeMedias()
 
     // afficher le header du photographe
-    displayData(onePhotographer)
+    displayHeader()
 
     // affiche les images du photographe
-    mediasWrapper(mediasOfPhotographer, onePhotographer)
+    mediasWrapper()
 
     // affiche les likes du photographe
-    photographerLikes(onePhotographer, mediasOfPhotographer)
+    photographerLikes()
 
     // console.log("console du init")
     // console.log(mediasOfPhotographer)
 }
 
 init();
+
+
+function addordislike(id)
+{
+    // soluce 1
+    // let media = mediasOfPhotographer.find(media_photographer => media_photographer.id == id)
+
+    // soluce 2
+    // let media = mediasOfPhotographer.find((media_photographer) => {
+    //     return media_photographer.id == id
+    // })
+
+    // soluce 3
+    let media = mediasOfPhotographer.find(
+    function(media_photographer)
+    {
+        return media_photographer.id == id
+    })
+
+
+    dbg("je rentre dans la fonction")
+    dbg("je récupere id = " + id)
+
+    if (document.querySelector("#likes-" + id + " i").classList.contains("liked"))
+    {
+        dbg("c'est déja liké")
+        media.likes--
+
+        dbg("j'ajoute la class liked au coeur ")
+        document.querySelector("#likes-" + id + " i").classList.remove("liked")
+
+        dbg("j'ajoute + 1 au compte global")
+        document.querySelector(".likes-count").innerHTML--
+    }
+    else
+    {
+        dbg("c'est pas liké")
+        media.likes++
+
+        dbg("j'ajoute la class liked au coeur ")
+        document.querySelector("#likes-" + id + " i").classList.add("liked")
+
+        dbg("j'ajoute + 1 au compte global")
+        document.querySelector(".likes-count").innerHTML++
+    }
+
+    dbg("j'ajoute + 1 aux likes de l'image ")
+    document.querySelector("#likes-" + id + " span").innerText = media.likes
+
+}
