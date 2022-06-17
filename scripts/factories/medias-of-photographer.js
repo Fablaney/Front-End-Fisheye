@@ -4,12 +4,9 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
     const { name } = dataPhotographer;
     const { date, id, photographerId, price, title, image, video, likes } = dataMedias;
     
-    // const { date, id, photographerId, price, title, image, video, likes} = dataMedias;
 
-    // let likes = {likes}.filter(likes => {likes});
-    
-    // dbg({likes})
-    // dbg(typeof(likes))
+    dbg(dataMedias.likes)
+    dbg(typeof(dataMedias.likes))
 
     const img = `assets/photographers/${name}/${image}`;
     const vid = `assets/photographers/${name}/${video}`;
