@@ -3,6 +3,8 @@ class LightBox
     static init()
     {
         const links = document.querySelectorAll('a[href$=".png"], a[href$=".jpg"], a[href$=".jpeg"], a[href$=".mp4"]')
+        // const links = document.querySelectorAll('img[src$=".png"], img[src$=".jpg"], img[src$=".jpeg"], img[src$=".mp4"]')
+        // const links = document.querySelectorAll('img-lightbox')
             .forEach(link => link.addEventListener('click', e =>
             {
                 e.preventDefault()
@@ -15,7 +17,7 @@ class LightBox
      */
     constructor(url)
     {
-        const element = this.buildDom(url)
+        const element = this.buildDOM(url)
         document.body.appendChild(element)
     }
 
@@ -42,7 +44,7 @@ class LightBox
      * @param {string} url URL de l'image
      * @return {HTMLElement}
      */
-    buildDom(url)
+    buildDOM(url)
     {
         const dom = document.createElement('div')
         dom.classList.add('lightbox-background')
@@ -62,5 +64,40 @@ class LightBox
 
         return dom
     }
+
+    /**
+     * @param {MouseEvent|KeyboardEvent} e 
+     */
+    next (e)
+    {
+        e.preventDefault()
+
+        let i = this.images.findIndex(image => image === this.url)
+
+        if (i === this.images.length - 1)
+        {
+            i = -1
+        }
+
+        this.loadImage(this.images[i + 1])
+    }
+
+    /**
+     * @param {MouseEvent|KeyboardEvent} e 
+     */
+    prev (e)
+    {
+        e.preventDefault()
+
+        let i = this.images.findIndex(image => image === this.url)
+
+        if (i === 0)
+        {
+            i = this.images.length
+        }
+
+        this.loadImage(this.images[i - 1])
+    }
 }
+
 LightBox.init()
