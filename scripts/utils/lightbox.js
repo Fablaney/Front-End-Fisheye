@@ -1,3 +1,6 @@
+/**
+ * @property {HTMLElement} element
+ */
 class LightBox
 {
     static init()
@@ -5,7 +8,7 @@ class LightBox
         const links = document.querySelectorAll('a[href$=".png"], a[href$=".jpg"], a[href$=".jpeg"]')
             .forEach(link => link.addEventListener('click', e =>
             {
-                alert(test)
+                alert("test")
                 e.preventDefault()
                 new LightBox(e.currentTarget.getAttribute('href'))
             }))
@@ -16,10 +19,33 @@ class LightBox
      */
     constructor(url)
     {
-        const element = this.buildDOM(url)
-        document.body.appendChild(element)
+        this.element = this.buildDOM(url)
+        this.loadImage(url)
+        document.body.appendChild(this.element)
     }
 
+    /**
+     * @param {string} url url de l'image
+     */
+    loadImage(url)
+    {
+        const image = new Image()
+
+        const container = this.element.querySelector('.lightbox__container')
+        
+        const loader = document.createElement('div')
+
+        loader.classList.add('lightbox-loader')
+
+        container.appendChild(loader)
+
+        image.onload = function()
+        {
+            console.log('chargé')
+        }
+
+        image.src = url
+    }
 
     // Bloc html à afficher dans la lightbox
     /* <div class="lightbox-background">
@@ -31,7 +57,8 @@ class LightBox
             <button class="lightbox__prev"><i class="fas fa-angle-left"></i></button>
 
             <div class="lightbox__container">
-                <img src="chemin/vers/image.jpg" alt="">
+                <div class="lightbox-loader"></div>
+                <img src="${url}" alt="">
                 <img src="https://picsum.photos/seed/picsum/1920/1080" alt="">
             </div>
 
@@ -56,7 +83,6 @@ class LightBox
 
                 <div class="lightbox__container">
                     <div class="lightbox-loader"></div>
-                    <img src="${url}" alt="">
                 </div>
 
             </div>`;
@@ -100,4 +126,4 @@ class LightBox
     }
 }
 
-LightBox.init()
+LightBox.init();
