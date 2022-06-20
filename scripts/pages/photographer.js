@@ -1,7 +1,7 @@
 //Mettre le code JavaScript lié à la page photographer.html
 
 // https://url-mon-site/?id=123
-// Je récupere l'url
+// Je récupere l'url pour afficher 1 photographe et ses images
 let parsedUrl = new URL(window.location.href);
 // Je récupere uniquement l'id et je la transfere dans une variable 
 let idPhotograph = parsedUrl.searchParams.get("id")
