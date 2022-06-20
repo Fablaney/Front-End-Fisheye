@@ -143,6 +143,13 @@ select:focus, select:active
     flex-direction: column;
     margin-bottom: 20px;
 }
+/* .img>img
+{
+    height: 300px;
+    max-width: 350px;
+    border-radius: 5px;
+    object-fit: cover;
+} */
 .img>a>img
 {
     height: 300px;
@@ -308,6 +315,14 @@ select:focus, select:active
     max-height: 100%;
     height: auto;
     animation: lightboxIn 0.5s;
+}
+/* loader au chargement d'une image */
+.lightbox-loader
+{
+    width: 40px;
+    height: 40px;
+    opacity: 1;
+    background: url('/assets/icons/loader.svg') center center no-repeat;
 }
 @keyframes lightboxIn
 {

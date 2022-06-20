@@ -2,13 +2,12 @@ class LightBox
 {
     static init()
     {
-        const links = document.querySelectorAll('a[href$=".png"], a[href$=".jpg"], a[href$=".jpeg"], a[href$=".mp4"]')
-        // const links = document.querySelectorAll('img[src$=".png"], img[src$=".jpg"], img[src$=".jpeg"], img[src$=".mp4"]')
-        // const links = document.querySelectorAll('img-lightbox')
+        const links = document.querySelectorAll('a[href$=".png"], a[href$=".jpg"], a[href$=".jpeg"]')
             .forEach(link => link.addEventListener('click', e =>
             {
+                alert(test)
                 e.preventDefault()
-                new LightBox(e.currentTarget.getAttrribute('href'))
+                new LightBox(e.currentTarget.getAttribute('href'))
             }))
     }
 
@@ -56,13 +55,31 @@ class LightBox
                 <button class="lightbox__prev"><i class="fas fa-angle-left"></i></button>
 
                 <div class="lightbox__container">
-                    <!-- <img src="chemin/vers/image.jpg" alt=""> -->
-                    <img src="https://picsum.photos/seed/picsum/1920/1080" alt="">
+                    <div class="lightbox-loader"></div>
+                    <img src="${url}" alt="">
                 </div>
 
             </div>`;
 
         return dom
+    }
+
+
+    /**
+     * @param {MouseEvent|KeyboardEvent} e 
+     */
+    prev (e)
+    {
+        e.preventDefault()
+
+        let i = this.images.findIndex(image => image === this.url)
+
+        if (i === 0)
+        {
+            i = this.images.length
+        }
+
+        this.loadImage(this.images[i - 1])
     }
 
     /**
@@ -80,23 +97,6 @@ class LightBox
         }
 
         this.loadImage(this.images[i + 1])
-    }
-
-    /**
-     * @param {MouseEvent|KeyboardEvent} e 
-     */
-    prev (e)
-    {
-        e.preventDefault()
-
-        let i = this.images.findIndex(image => image === this.url)
-
-        if (i === 0)
-        {
-            i = this.images.length
-        }
-
-        this.loadImage(this.images[i - 1])
     }
 }
 
