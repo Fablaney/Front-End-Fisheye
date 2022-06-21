@@ -171,7 +171,9 @@ function addordislike(id)
 // Fonction SORT BY
 function sortBy(value)
 {
-    document.querySelector(".medias-wrapper").removeChild(document.querySelector("medias-cards").forEach(elt) => { elt.remove()})
+    document.querySelector(".medias-wrapper").removeChild(document.querySelector("medias-cards").forEach((elt)=>{ 
+        elt.remove()
+        )})
     
     
     dbg("Je récupere la valeur du select = " + value)
