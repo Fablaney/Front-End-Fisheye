@@ -6,7 +6,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
 
     // dbg( dataMedias)
     
-  
+
     // dbg( dataMedias.likes)
 
     // dbg(typeof({likes}))
@@ -19,13 +19,13 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
     const getMediasCardDOM = () => {
         if(video !== undefined){
             return `
-                <div class="medias-cards">
-
+                <div class="gallery-item" data-index="${id}">
                     <div class="vid">
                         <video src="${vid}" type="video/mp4" controls></video>
                     </div>
 
                     <div class="name-likes">
+
                         <div class="title">
                             ${title}
                         </div>
@@ -33,9 +33,11 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                         <div class="likes" id="likes-${id}">
                             <span>${likes}</span> <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"></i>
                         </div>
+                        
                     </div>
-                    
-                </div>`
+
+                </div>
+                `
         }
         else
         {
