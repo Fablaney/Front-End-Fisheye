@@ -43,9 +43,9 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                 <div class="medias-cards">
         
                     <div class="img">
-                    
-                        <img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}">
-                   
+                        <a href="${img}">
+                            <img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}">
+                        </a>
                     </div>
         
                     <div class="name-likes">
