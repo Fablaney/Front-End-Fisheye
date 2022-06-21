@@ -174,10 +174,9 @@ function sortBy(value)
     dbg("Je récupere la valeur du select = " + value)
 
     dbg("Je récupere les medias du photographe")
-    dbg( mediasOfPhotographer.find(media_photographer => media_photographer.value == value) )
+    dbg(mediasOfPhotographer)
 
     dbg("Je trie par : " + value)
-
     let mediasSorteds = mediasOfPhotographer.sort(x => x.value)
 
     dbg(mediasSorteds)
