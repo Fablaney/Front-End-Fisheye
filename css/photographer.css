@@ -151,13 +151,6 @@ select:focus, select:active
     border-radius: 5px;
     object-fit: cover;
 }
-/* .img>a>img
-{
-    height: 300px;
-    max-width: 350px;
-    border-radius: 5px;
-    object-fit: cover;
-} */
 .vid>video
 {
     height: 300px;
