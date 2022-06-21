@@ -176,25 +176,25 @@ function sortBy(value)
     dbg("Je récupere les medias du photographe")
     dbg( mediasOfPhotographer.find(media_photographer => media_photographer.value == value) )
 
-    // dbg("Je trie par : " + value)
+    dbg("Je trie par : " + value)
 
-    // let mediasSorteds = mediasOfPhotographer.sort(x => x.value)
+    let mediasSorteds = mediasOfPhotographer.sort(x => x.value)
 
-    // dbg(mediasSorteds)
+    dbg(mediasSorteds)
 
     // je selectionne le bloc html ou je vais re-afficher les medias triés par ... 
-    // const mediasPhotographersSection = document.querySelector(".medias-wrapper");
+    const mediasPhotographersSection = document.querySelector(".medias-wrapper");
 
-    // // Je boucle sur photographers pour afficher les images
-    // mediasSorteds.forEach((mediasSorteds) => {
-    //     // je prend la fonction pour afficher les infos et je lui passe les données du photographe
-    //     const mediasPhotographerModel = photographerFactoryMedias(mediasSorteds, onePhotographer);
+    // Je boucle sur photographers pour afficher les images
+    mediasSorteds.forEach((mediasSorteds) => {
+        // je prend la fonction pour afficher les infos et je lui passe les données du photographe
+        const mediasPhotographerModel = photographerFactoryMedias(mediasSorteds, onePhotographer);
 
-    //     const userMediasDOM = mediasPhotographerModel.getMediasCardDOM();
-    //     // const userImagesDOM = mediasPhotographerModel.getImagesCardDOM();
-    //     // const userVideosDOM = mediasPhotographerModel.getVideosCardDOM();
+        const userMediasDOM = mediasPhotographerModel.getMediasCardDOM();
+        // const userImagesDOM = mediasPhotographerModel.getImagesCardDOM();
+        // const userVideosDOM = mediasPhotographerModel.getVideosCardDOM();
 
-    //     // j'insere le bloc dans la page html dans le bloc .medias-wrapper
-    //     mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userMediasDOM, );
-    // });
+        // j'insere le bloc dans la page html dans le bloc .medias-wrapper
+        mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userMediasDOM, );
+    });
 }
