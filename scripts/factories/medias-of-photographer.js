@@ -39,16 +39,12 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
         }
         else
         {
-            return `
-                <div class="medias-cards">
-        
-                    <div class="img">
-                       
-                        <img class="w-100 image" src="${img}" alt="Photo de ${name}">
-                      
-                    </div>
-        
+            return  `
+                <div class="gallery-item" data-index="${id}">
+                    <img src="${img}">
+
                     <div class="name-likes">
+
                         <div class="title">
                             ${title}
                         </div>
@@ -56,9 +52,11 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                         <div class="likes" id="likes-${id}">
                             <span>${likes}</span> <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"></i>
                         </div>
+                        
                     </div>
-                    
-                </div>`
+
+                </div>
+                `
         ;}
     }
 

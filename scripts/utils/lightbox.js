@@ -1,90 +1,74 @@
-//getting all required elements
-const gallery  = document.querySelectorAll(".image"),
-previewBox = document.querySelector(".preview-box"),
-previewImg = previewBox.querySelector("img"),
-closeIcon = previewBox.querySelector(".icon"),
-currentImg = previewBox.querySelector(".current-img"),
-totalImg = previewBox.querySelector(".total-img"),
-shadow = document.querySelector(".shadow");
+const galleryItem = document.getElementsByClassName("gallery-item");
+const lightBoxContainer = document.createElement("div");
+const lightBoxContent = document.createElement("div");
+const lightBoxImg = document.createElement("img");
+const lightBoxPrev = document.createElement("div");
+const lightBoxNext = document.createElement("div");
 
-window.onload = ()=>{
-    for (let i = 0; i < gallery.length; i++)
+lightBoxContainer.classList.add("lightbox");
+lightBoxContent.classList.add("lightbox-content");
+lightBoxPrev.classList.add("fa", "fa-angle-left", "lightbox-prev");
+lightBoxNext.classList.add("fa", "fa-angle-right", "lightbox-next");
+
+lightBoxContainer.appendChild(lightBoxContent);
+lightBoxContent.appendChild(lightBoxImg);
+lightBoxContent.appendChild(lightBoxPrev);
+lightBoxContent.appendChild(lightBoxNext);
+
+document.body.appendChild(lightBoxContainer);
+
+let index = 1;
+
+function showLightBox(n)
+{
+    if (n > galleryItem.length)
     {
-        totalImg.textContent = gallery.length; //passing total img length to totalImg variable
+        index = 1;
+    }
+    else if (n < 1)
+    {
+        index = galleryItem.length;
+    }
 
-        let newIndex = i; //passing i value to newIndex variable
+    let imageLocation = galleryItem[index-1].children[0].getAttribute("src");
 
-        let clickedImgIndex; //creating new variable
-        
-        gallery[i].onclick = () =>{
-            clickedImgIndex = i; //passing cliked image index to created variable (clickedImgIndex)
+    lightBoxImg.setAttribute("src", imageLocation);
+}
 
-            function preview()
-            {
-                currentImg.textContent = newIndex + 1; //passing current img index to currentImg varible with adding +1
+function currentImage()
+{
+    lightBoxContainer.style.display = "block";
 
-                let imageURL = gallery[newIndex].querySelector("img").src; //getting user clicked img url
+    let imageIndex = parseInt(this.getAttribute("data-index"));
+    showLightBox(index = imageIndex);
+}
 
-                previewImg.src = imageURL; //passing user clicked img url in previewImg src
-            }
-            preview(); //calling above function
-    
-            const prevBtn = document.querySelector(".prev");
+for (let i = 0; i < galleryItem.length; i++)
+{
+    galleryItem[i].addEventListener("click", currentImage);
+}
 
-            const nextBtn = document.querySelector(".next");
+function slideImage(n)
+{
+    showLightBox(index += n);
+}
+function prevImage()
+{
+    slideImage(-1);
+}
+function nextImage()
+{
+    slideImage(1);
+}
+lightBoxPrev.addEventListener("click", prevImage);
+lightBoxNext.addEventListener("click", nextImage);
 
-            if(newIndex == 0) //if index value is equal to 0 then hide prevBtn
-            {
-                prevBtn.style.display = "none"; 
-            }
-
-            if(newIndex >= gallery.length - 1) //if index value is greater and equal to gallery length by -1 then hide nextBtn
-            {
-                nextBtn.style.display = "none"; 
-            }
-
-            prevBtn.onclick = ()=>{ 
-                newIndex--; //decrement index
-                if(newIndex == 0)
-                {
-                    preview(); 
-                    prevBtn.style.display = "none"; 
-                }
-                else
-                {
-                    preview();
-                    nextBtn.style.display = "block";
-                } 
-            }
-            nextBtn.onclick = ()=>{ 
-                newIndex++; //increment index
-
-                if(newIndex >= gallery.length - 1)
-                {
-                    preview(); 
-                    nextBtn.style.display = "none";
-                }
-                else
-                {
-                    preview(); 
-                    prevBtn.style.display = "block";
-                }
-            }
-
-            document.querySelector("body").style.overflow = "hidden";
-
-            previewBox.classList.add("show"); 
-
-            shadow.style.display = "block"; 
-            
-            closeIcon.onclick = ()=>{
-                newIndex = clickedImgIndex; //assigning user first clicked img index to newIndex
-                prevBtn.style.display = "block"; 
-                nextBtn.style.display = "block";
-                previewBox.classList.remove("show");
-                shadow.style.display = "none";
-                document.querySelector("body").style.overflow = "scroll";
-            }
-        }
+function closeLightBox()
+{
+    if (this === event.target)
+    {
+        lightBoxContainer.style.display = "none";
     }
 }
+
+lightBoxContainer.addEventListener("click", closeLightBox);
