@@ -1,129 +1,90 @@
-/**
- * @property {HTMLElement} element
- */
-class LightBox
-{
-    static init()
-    {
-        const links = document.querySelectorAll('a[href$=".png"], a[href$=".jpg"], a[href$=".jpeg"]')
-            .forEach(link => link.addEventListener('click', e =>
-            {
-                alert("test")
-                e.preventDefault()
-                new LightBox(e.currentTarget.getAttribute('href'))
-            }))
-    }
+//getting all required elements
+const gallery  = document.querySelectorAll(".image"),
+previewBox = document.querySelector(".preview-box"),
+previewImg = previewBox.querySelector("img"),
+closeIcon = previewBox.querySelector(".icon"),
+currentImg = previewBox.querySelector(".current-img"),
+totalImg = previewBox.querySelector(".total-img"),
+shadow = document.querySelector(".shadow");
 
-    /**
-     * @param {string} url url de l'image
-     */
-    constructor(url)
+window.onload = ()=>{
+    for (let i = 0; i < gallery.length; i++)
     {
-        this.element = this.buildDOM(url)
-        this.loadImage(url)
-        document.body.appendChild(this.element)
-    }
+        totalImg.textContent = gallery.length; //passing total img length to totalImg variable
 
-    /**
-     * @param {string} url url de l'image
-     */
-    loadImage(url)
-    {
-        const image = new Image()
+        let newIndex = i; //passing i value to newIndex variable
 
-        const container = this.element.querySelector('.lightbox__container')
+        let clickedImgIndex; //creating new variable
         
-        const loader = document.createElement('div')
+        gallery[i].onclick = () =>{
+            clickedImgIndex = i; //passing cliked image index to created variable (clickedImgIndex)
 
-        loader.classList.add('lightbox-loader')
+            function preview()
+            {
+                currentImg.textContent = newIndex + 1; //passing current img index to currentImg varible with adding +1
 
-        container.appendChild(loader)
+                let imageURL = gallery[newIndex].querySelector("img").src; //getting user clicked img url
 
-        image.onload = function()
-        {
-            console.log('chargé')
+                previewImg.src = imageURL; //passing user clicked img url in previewImg src
+            }
+            preview(); //calling above function
+    
+            const prevBtn = document.querySelector(".prev");
+
+            const nextBtn = document.querySelector(".next");
+
+            if(newIndex == 0) //if index value is equal to 0 then hide prevBtn
+            {
+                prevBtn.style.display = "none"; 
+            }
+
+            if(newIndex >= gallery.length - 1) //if index value is greater and equal to gallery length by -1 then hide nextBtn
+            {
+                nextBtn.style.display = "none"; 
+            }
+
+            prevBtn.onclick = ()=>{ 
+                newIndex--; //decrement index
+                if(newIndex == 0)
+                {
+                    preview(); 
+                    prevBtn.style.display = "none"; 
+                }
+                else
+                {
+                    preview();
+                    nextBtn.style.display = "block";
+                } 
+            }
+            nextBtn.onclick = ()=>{ 
+                newIndex++; //increment index
+
+                if(newIndex >= gallery.length - 1)
+                {
+                    preview(); 
+                    nextBtn.style.display = "none";
+                }
+                else
+                {
+                    preview(); 
+                    prevBtn.style.display = "block";
+                }
+            }
+
+            document.querySelector("body").style.overflow = "hidden";
+
+            previewBox.classList.add("show"); 
+
+            shadow.style.display = "block"; 
+            
+            closeIcon.onclick = ()=>{
+                newIndex = clickedImgIndex; //assigning user first clicked img index to newIndex
+                prevBtn.style.display = "block"; 
+                nextBtn.style.display = "block";
+                previewBox.classList.remove("show");
+                shadow.style.display = "none";
+                document.querySelector("body").style.overflow = "scroll";
+            }
         }
-
-        image.src = url
-    }
-
-    // Bloc html à afficher dans la lightbox
-    /* <div class="lightbox-background">
-
-        <div class="lightbox">
-
-            <button class="lightbox__close"><i class="fas fa-times"></i></button>
-            <button class="lightbox__next"><i class="fas fa-angle-right"></i></button>
-            <button class="lightbox__prev"><i class="fas fa-angle-left"></i></button>
-
-            <div class="lightbox__container">
-                <div class="lightbox-loader"></div>
-                <img src="${url}" alt="">
-                <img src="https://picsum.photos/seed/picsum/1920/1080" alt="">
-            </div>
-
-        </div>
-
-    </div>  */
-
-    /**
-     * @param {string} url URL de l'image
-     * @return {HTMLElement}
-     */
-    buildDOM(url)
-    {
-        const dom = document.createElement('div')
-        dom.classList.add('lightbox-background')
-        dom.innerHTML = `
-            <div class="lightbox">
-
-                <button class="lightbox__close"><i class="fas fa-times"></i></button>
-                <button class="lightbox__next"><i class="fas fa-angle-right"></i></button>
-                <button class="lightbox__prev"><i class="fas fa-angle-left"></i></button>
-
-                <div class="lightbox__container">
-                    <div class="lightbox-loader"></div>
-                </div>
-
-            </div>`;
-
-        return dom
-    }
-
-
-    /**
-     * @param {MouseEvent|KeyboardEvent} e 
-     */
-    prev (e)
-    {
-        e.preventDefault()
-
-        let i = this.images.findIndex(image => image === this.url)
-
-        if (i === 0)
-        {
-            i = this.images.length
-        }
-
-        this.loadImage(this.images[i - 1])
-    }
-
-    /**
-     * @param {MouseEvent|KeyboardEvent} e 
-     */
-    next (e)
-    {
-        e.preventDefault()
-
-        let i = this.images.findIndex(image => image === this.url)
-
-        if (i === this.images.length - 1)
-        {
-            i = -1
-        }
-
-        this.loadImage(this.images[i + 1])
     }
 }
-
-LightBox.init();
