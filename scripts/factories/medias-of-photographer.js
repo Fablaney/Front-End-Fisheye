@@ -22,7 +22,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                 <div class="medias-cards">
 
                     <div class="vid">
-                        <video src="${vid}" type="video/mp4" controls></video>
+                        <video src="${vid}" type="video/mp4"></video>
                     </div>
 
                     <div class="name-likes">
@@ -43,9 +43,9 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                 <div class="medias-cards">
         
                     <div class="img">
-                        <a href="${img}">
+                        
                             <img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}">
-                        </a>
+                       
                     </div>
         
                     <div class="name-likes">

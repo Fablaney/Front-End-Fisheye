@@ -3,31 +3,38 @@
  */
 class LightBox
 {
+    /**
+     * @param {string} datas url de l'image
+     */
+    constructor(datas)
+    {
+        this.datas = datas
+        
+        this.buildDOM()
+        this.loadImage(datas)
+        document.body.appendChild(this.element)
+    }
+
     static init()
     {
-        const links = document.querySelectorAll('a[href$=".png"], a[href$=".jpg"], a[href$=".jpeg"]')
+        const links = document.querySelectorAll('img[src$=".png"], img[src$=".jpg"], img[src$=".jpeg"]')
+            console.log(links)
+
             .forEach(link => link.addEventListener('click', e =>
             {
+                console.log(e)
                 alert("test")
                 e.preventDefault()
                 new LightBox(e.currentTarget.getAttribute('href'))
             }))
     }
+    
+ 
 
     /**
-     * @param {string} url url de l'image
+     * @param {string} datas url de l'image
      */
-    constructor(url)
-    {
-        this.element = this.buildDOM(url)
-        this.loadImage(url)
-        document.body.appendChild(this.element)
-    }
-
-    /**
-     * @param {string} url url de l'image
-     */
-    loadImage(url)
+    loadImage(datas)
     {
         const image = new Image()
 
@@ -44,7 +51,7 @@ class LightBox
             console.log('chargé')
         }
 
-        image.src = url
+        image.src = datas
     }
 
     // Bloc html à afficher dans la lightbox
@@ -67,10 +74,10 @@ class LightBox
     </div>  */
 
     /**
-     * @param {string} url URL de l'image
+     * @param {string} datas URL de l'image
      * @return {HTMLElement}
      */
-    buildDOM(url)
+    buildDOM(datas)
     {
         const dom = document.createElement('div')
         dom.classList.add('lightbox-background')
@@ -98,7 +105,7 @@ class LightBox
     {
         e.preventDefault()
 
-        let i = this.images.findIndex(image => image === this.url)
+        let i = this.images.findIndex(image => image === this.datas)
 
         if (i === 0)
         {
@@ -115,7 +122,7 @@ class LightBox
     {
         e.preventDefault()
 
-        let i = this.images.findIndex(image => image === this.url)
+        let i = this.images.findIndex(image => image === this.datas)
 
         if (i === this.images.length - 1)
         {

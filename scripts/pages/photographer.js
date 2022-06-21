@@ -171,28 +171,42 @@ function addordislike(id)
 // Fonction SORT BY
 function sortBy(value)
 {
-    document.querySelector(".medias-wrapper").removeChild(document.querySelector("medias-cards").forEach((elt)=>{ 
-        elt.remove()
-        )})
-    
-    
+    // document.querySelector(".medias-wrapper").removeChild(document.querySelectorAll("medias-cards").forEach( (elt)=>{ elt.remove() } ) )
+    document.querySelectorAll("medias-cards").forEach( (elt)=>{ elt.remove() } )
+
     dbg("Je récupere la valeur du select = " + value)
 
     dbg("Je récupere les medias du photographe")
-    dbg(mediasOfPhotographer)
+    // dbg(mediasOfPhotographer)
 
     dbg("Je trie par : " + value)
-    let mediasSorteds = mediasOfPhotographer.sort(x => x.value)
 
-    dbg(mediasSorteds)
+    let mediasSorteds; 
 
+    if ( value == "likes")
+    {
+        mediasSorteds = getDataByPop(mediasOfPhotographer)
+    }
+    if (value == "date")
+    {
+        mediasSorteds = getDataByDate(mediasOfPhotographer)
+    }
+    if (value == "title")
+    {
+        mediasSorteds = getDataByTitle(mediasOfPhotographer)
+    }
+
+    // dbg(mediasSorteds)
+    
     // je selectionne le bloc html ou je vais re-afficher les medias triés par ... 
     const mediasPhotographersSection = document.querySelector(".medias-wrapper");
 
+    document.querySelectorAll(".medias-cards").forEach( (elt)=>{ elt.remove() } )
+
     // Je boucle sur photographers pour afficher les images
-    mediasSorteds.forEach((mediasSorteds) => {
+    mediasSorteds.forEach((mediaSorted) => {
         // je prend la fonction pour afficher les infos et je lui passe les données du photographe
-        const mediasPhotographerModel = photographerFactoryMedias(mediasSorteds, onePhotographer);
+        const mediasPhotographerModel = photographerFactoryMedias(mediaSorted, onePhotographer);
 
         const userMediasDOM = mediasPhotographerModel.getMediasCardDOM();
         // const userImagesDOM = mediasPhotographerModel.getImagesCardDOM();
@@ -201,4 +215,43 @@ function sortBy(value)
         // j'insere le bloc dans la page html dans le bloc .medias-wrapper
         mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userMediasDOM, );
     });
+
+}
+
+// /
+//  * tri les données par popularité
+//  * @param {array} datas
+//  * @returns {array}
+//  */
+function getDataByPop(datas) {
+  return datas.sort((a, b) => {
+    // 'b'(par sa position) sera la reference et sera comparé à 'a', qui sera l'élément suivant
+    // b > a
+    return b.likes - a.likes;
+  });
+}
+
+// /
+//  * tri les données par titre
+//  * @param {array} datas
+//  * @returns {array}
+//  */
+function getDataByTitle(datas) {
+  return datas.sort((a, b) => {
+    return a.title.localeCompare(b.title);
+  });
+}
+
+/**
+ * tri les données par date
+ * @param {array} datas
+ * @returns {array}
+ */
+function getDataByDate(datas) {
+  return datas.slice().sort((a, b) => {
+    // a < b
+    const valueA = new Date(a.date);
+    const valueB = new Date(b.date);
+    return valueB - valueA;
+  });
 }
