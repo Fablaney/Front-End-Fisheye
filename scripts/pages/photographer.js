@@ -22,7 +22,7 @@ async function getPhotographers()
 
     // lire le corps de réponse et analyser en JSON
     let photographers = await response.json()
-    // dbg(photographers)
+    // console;log(photographers)
     // je vais chercher les infos de 1 photographe par son id passée en URL
     onePhotographer = photographers.photographers.find(x => x.id === idPhotograph)
 
@@ -39,9 +39,9 @@ async function getPhotographeMedias()
     let photographerMedias = await response.json()
 
     // je vais chercher les infos de 1 photographe par son id passée en URL
-    // dbg.log("affiche les medias de 1 photographe")
+    // console;log.log("affiche les medias de 1 photographe")
     mediasOfPhotographer = photographerMedias.media.filter(medias => medias.photographerId === idPhotograph);
-    // dbg.log(mediasOfPhotographer)
+    // console;log.log(mediasOfPhotographer)
 
     return mediasOfPhotographer
 }
@@ -112,8 +112,8 @@ async function init()
     // affiche les likes du photographe
     photographerLikes()
 
-    // dbg.log("dbg du init")
-    // dbg.log(mediasOfPhotographer)
+    // console;log.log("console;log du init")
+    // console;log.log(mediasOfPhotographer)
 }
 
 init();
@@ -136,33 +136,33 @@ function addordislike(id)
     //     return media_photographer.id == id
     // })
 
-    // dbg("je rentre dans la fonction")
-    // dbg("je récupere id = " + id)
+    // console;log("je rentre dans la fonction")
+    // console;log("je récupere id = " + id)
 
     if (document.querySelector("#likes-" + id + " i").classList.contains("liked"))
     {
-        // dbg("c'est déja liké je supprime 1")
+        // console;log("c'est déja liké je supprime 1")
         media.likes--
 
-        // dbg("je supprime la class liked au coeur ")
+        // console;log("je supprime la class liked au coeur ")
         document.querySelector("#likes-" + id + " i").classList.remove("liked")
 
-        // dbg("j'enleve - 1 au compte global")
+        // console;log("j'enleve - 1 au compte global")
         document.querySelector(".likes-count").innerHTML--
     }
     else
     {
-        // dbg("c'est pas liké j'ajoute 1")
+        // console;log("c'est pas liké j'ajoute 1")
         media.likes++
 
-        // dbg("j'ajoute la class liked au coeur ")
+        // console;log("j'ajoute la class liked au coeur ")
         document.querySelector("#likes-" + id + " i").classList.add("liked")
 
-        // dbg("j'ajoute + 1 au compte global")
+        // console;log("j'ajoute + 1 au compte global")
         document.querySelector(".likes-count").innerHTML++
     }
 
-    // dbg("j'ajoute + 1 aux likes de l'image ")
+    // console;log("j'ajoute + 1 aux likes de l'image ")
     document.querySelector("#likes-" + id + " span").innerText = media.likes
 }
 
@@ -173,12 +173,12 @@ function sortBy(value)
     // document.querySelector(".medias-wrapper").removeChild(document.querySelectorAll("medias-cards").forEach( (elt)=>{ elt.remove() } ) )
     document.querySelectorAll("medias-cards").forEach( (elt)=>{ elt.remove() } )
 
-    // dbg("Je récupere la valeur du select = " + value)
+    // console;log("Je récupere la valeur du select = " + value)
 
-    // dbg("Je récupere les medias du photographe")
-    // dbg(mediasOfPhotographer)
+    // console;log("Je récupere les medias du photographe")
+    // console;log(mediasOfPhotographer)
 
-    // dbg("Je trie par : " + value)
+    // console;log("Je trie par : " + value)
 
     let mediasSorteds; 
 
@@ -233,7 +233,7 @@ function sortBy(value)
         mediasSorteds = getDataByTitle(mediasOfPhotographer)
     }
 
-    // dbg(mediasSorteds)
+    // console;log(mediasSorteds)
     
     // je selectionne le bloc html ou je vais re-afficher les medias triés par ... 
     const mediasPhotographersSection = document.querySelector(".medias-wrapper");

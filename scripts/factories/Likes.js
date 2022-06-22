@@ -9,12 +9,12 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
     // je mape les data
     // let dataMediasLikes = dataMedias.map(likesExtract => likesExtract.likes);
 
-    // dbg(dataMediasLikes)
+    // console;log(dataMediasLikes)
 
     // Je boucle sur dataMedias pour récuperer le nombre de lignes
     // dataMediasLikes.forEach((dataMedialike) => {
 
-    //     // dbg(dataMedialike)
+    //     // console;log(dataMedialike)
    
     //     totalLikes += dataMedialike
     // });
@@ -23,7 +23,7 @@ function photographerFactoryLikes(dataPhotographer, dataMedias)
     // filtrer et ajouter chaque dataMedialike.likes à totalLikes
     dataMedias.forEach(dataMedialike => { totalLikes += dataMedialike.likes });
 
-    // dbg("Total likes = " + totalLikes)
+    // console;log("Total likes = " + totalLikes)
 
     let likes = totalLikes
 
