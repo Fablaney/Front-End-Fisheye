@@ -1,19 +1,21 @@
 //getting all required elements
 // Je prends tous les éléments qui sont dans la gallery
-const gallery = document.querySelectorAll(".image"),
+const gallery = document.querySelectorAll(".image")
+console.log(gallery)
 
 // Je prends la lightbox
-previewBox = document.querySelector(".preview-box"),
-
-previewImg = previewBox.querySelector("img"),
-
-closeIcon = previewBox.querySelector(".icon"),
-
-currentImg = previewBox.querySelector(".current-img"),
-
-totalImg = previewBox.querySelector(".total-img"),
-
-shadow = document.querySelector(".shadow");
+previewBox = document.querySelector(".preview-box")
+console.log(previewBox)
+previewImg = previewBox.querySelector("img")
+console.log(previewImg)
+closeIcon = previewBox.querySelector(".icon")
+console.log(closeIcon)
+currentImg = previewBox.querySelector(".current-img")
+console.log(currentImg)
+totalImg = previewBox.querySelector(".total-img")
+console.log(totalImg)
+shadow = document.querySelector(".shadow")
+console.log(shadow)
 
 window.onload = ()=>{
     for (let i = 0; i < gallery.length; i++)
@@ -51,6 +53,7 @@ window.onload = ()=>{
             {
                 nextBtn.style.display = "none"; 
             }
+
             prevBtn.onclick = ()=>{ 
                 newIndex--; //decrement index
                 if(newIndex == 0)
@@ -64,6 +67,7 @@ window.onload = ()=>{
                     nextBtn.style.display = "block";
                 } 
             }
+
             nextBtn.onclick = ()=>{ 
                 newIndex++; //increment index
 
