@@ -67,9 +67,9 @@ async function mediasWrapper()
 {
     // je selectionne le bloc html ou je vais afficher les infos 
 
-    // const mediasPhotographersSection = document.querySelector(".medias-wrapper");
+    const mediasPhotographersSection = document.querySelector(".medias-wrapper");
 
-    const mediasPhotographersSection = document.querySelector(".gallery");
+    // const mediasPhotographersSection = document.querySelector(".gallery");
 
     // Je boucle sur photographers pour afficher les images
     mediasOfPhotographer.forEach((mediaOfPhotographer) => {
