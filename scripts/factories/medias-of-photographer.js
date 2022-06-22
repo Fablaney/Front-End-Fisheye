@@ -17,7 +17,8 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
   
     // Fonction de la création des cartes des photographes
     const getMediasCardDOM = () => {
-        if(video !== undefined){
+        if(video !== undefined)
+        {
             return `
                 <div class="medias-cards">
 

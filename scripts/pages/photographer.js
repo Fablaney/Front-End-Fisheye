@@ -69,8 +69,6 @@ async function mediasWrapper()
 
     const mediasPhotographersSection = document.querySelector(".medias-wrapper");
 
-    // const mediasPhotographersSection = document.querySelector(".gallery");
-
     // Je boucle sur photographers pour afficher les images
     mediasOfPhotographer.forEach((mediaOfPhotographer) => {
         // je prend la fonction pour afficher les infos et je lui passe les données du photographe
