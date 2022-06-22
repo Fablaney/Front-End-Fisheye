@@ -85,24 +85,19 @@
     </div>
 
     <!-- lightbox test -->
-    <div class="preview-box">
-
-        <div class="details">
-            <span class="title">Image <p class="current-img"></p> de <p class="total-img"></p></span>
-            <span class="icon fas fa-times"></span>
+    <div class="lightbox-container">
+        <div class="lightbox">
+            <button class="lightbox__close"><i class="fas fa-times"></i></button>
+            <button class="lightbox__prev"><i class="fas fa-angle-left"></i></button>
+            <button class="lightbox__next"><i class="fas fa-angle-right"></i></button>
+            
+            <div class="lightbox__container">
+                <!-- <img src="chemin/vers/image.jpg" alt=""> -->
+            </div>
         </div>
-
-        <div class="image-box">
-            <div class="slide prev"><i class="fas fa-angle-left"></i></div>
-            <div class="slide next"><i class="fas fa-angle-right"></i></div>
-            <img src="" alt="">
-        </div>
-
+        
+        <div class="shadow"></div>
     </div>
-
-    <div class="shadow"></div>
-
-
 
     <script src="/scripts/utils/lightbox.js"></script>
 
