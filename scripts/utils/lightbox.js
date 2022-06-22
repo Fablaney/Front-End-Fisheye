@@ -6,8 +6,11 @@ function openLightBox()
     // affichage du contenu de la lightbox
     function displayLightBox()
     {
-        const lightboxconainer = document.querySelector(".lightbox__container")
-        console.log(lightboxconainer)
+        const lightboxcontainer = document.querySelector(".lightbox__container")
+        console.log(lightboxcontainer)
+
+
+
     }
     displayLightBox()
 }
