@@ -19,45 +19,19 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
     const getMediasCardDOM = () => {
         if(video !== undefined){
             return `
-                <div class="medias-cards">
-
-                    <div class="vid">
+                <div class="image">
+                    <span>
                         <video src="${vid}" type="video/mp4"></video>
-                    </div>
-
-                    <div class="name-likes">
-                        <div class="title">
-                            ${title}
-                        </div>
-
-                        <div class="likes" id="likes-${id}">
-                            <span>${likes}</span> <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"></i>
-                        </div>
-                    </div>
-                    
+                    </span>
                 </div>`
         }
         else
         {
             return `
-                <div class="medias-cards">
-        
-                    <div class="img">
-                        
-                            <img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}">
-                       
-                    </div>
-        
-                    <div class="name-likes">
-                        <div class="title">
-                            ${title}
-                        </div>
-
-                        <div class="likes" id="likes-${id}">
-                            <span>${likes}</span> <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"></i>
-                        </div>
-                    </div>
-                    
+                <div class="image">
+                    <span>
+                        <img src="${img}" alt="">
+                    </span>
                 </div>`
         ;}
     }

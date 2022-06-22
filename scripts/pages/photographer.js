@@ -39,9 +39,9 @@ async function getPhotographeMedias()
     let photographerMedias = await response.json()
 
     // je vais chercher les infos de 1 photographe par son id passée en URL
-    // console.log("affiche les medias de 1 photographe")
+    // dbg.log("affiche les medias de 1 photographe")
     mediasOfPhotographer = photographerMedias.media.filter(medias => medias.photographerId === idPhotograph);
-    // console.log(mediasOfPhotographer)
+    // dbg.log(mediasOfPhotographer)
 
     return mediasOfPhotographer
 }
@@ -66,7 +66,10 @@ async function displayHeader()
 async function mediasWrapper()
 {
     // je selectionne le bloc html ou je vais afficher les infos 
-    const mediasPhotographersSection = document.querySelector(".medias-wrapper");
+
+    // const mediasPhotographersSection = document.querySelector(".medias-wrapper");
+
+    const mediasPhotographersSection = document.querySelector(".gallery");
 
     // Je boucle sur photographers pour afficher les images
     mediasOfPhotographer.forEach((mediaOfPhotographer) => {
@@ -74,8 +77,6 @@ async function mediasWrapper()
         const mediasPhotographerModel = photographerFactoryMedias(mediaOfPhotographer, onePhotographer);
 
         const userMediasDOM = mediasPhotographerModel.getMediasCardDOM();
-        // const userImagesDOM = mediasPhotographerModel.getImagesCardDOM();
-        // const userVideosDOM = mediasPhotographerModel.getVideosCardDOM();
 
         // j'insere le bloc dans la page html dans le bloc .medias-wrapper
         mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userMediasDOM, );
@@ -113,8 +114,8 @@ async function init()
     // affiche les likes du photographe
     photographerLikes()
 
-    // console.log("console du init")
-    // console.log(mediasOfPhotographer)
+    // dbg.log("dbg du init")
+    // dbg.log(mediasOfPhotographer)
 }
 
 init();
@@ -174,25 +175,63 @@ function sortBy(value)
     // document.querySelector(".medias-wrapper").removeChild(document.querySelectorAll("medias-cards").forEach( (elt)=>{ elt.remove() } ) )
     document.querySelectorAll("medias-cards").forEach( (elt)=>{ elt.remove() } )
 
-    dbg("Je récupere la valeur du select = " + value)
+    // dbg("Je récupere la valeur du select = " + value)
 
-    dbg("Je récupere les medias du photographe")
+    // dbg("Je récupere les medias du photographe")
     // dbg(mediasOfPhotographer)
 
-    dbg("Je trie par : " + value)
+    // dbg("Je trie par : " + value)
 
     let mediasSorteds; 
 
     if ( value == "likes")
     {
+        /**
+         * tri les données par popularité
+         * @param {array} datas
+         * @returns {array}
+         */
+        function getDataByPop(datas)
+        {
+            return datas.sort((a, b) => {
+                // 'b'(par sa position) sera la reference et sera comparé à 'a', qui sera l'élément suivant
+                // b > a
+                return b.likes - a.likes;
+            });
+        }
         mediasSorteds = getDataByPop(mediasOfPhotographer)
     }
     if (value == "date")
     {
+        /**
+         * tri les données par date
+         * @param {array} datas
+         * @returns {array}
+         */
+        function getDataByDate(datas)
+        {
+            return datas.slice().sort((a, b) => {
+            // a < b
+            const valueA = new Date(a.date);
+            const valueB = new Date(b.date);
+            return valueB - valueA;
+            });
+        }
         mediasSorteds = getDataByDate(mediasOfPhotographer)
     }
     if (value == "title")
     {
+        /**
+         * tri les données par titre
+         * @param {array} datas
+         * @returns {array}
+         */
+        function getDataByTitle(datas)
+        {
+            return datas.sort((a, b) => {
+            return a.title.localeCompare(b.title);
+            });
+        }
         mediasSorteds = getDataByTitle(mediasOfPhotographer)
     }
 
@@ -209,49 +248,8 @@ function sortBy(value)
         const mediasPhotographerModel = photographerFactoryMedias(mediaSorted, onePhotographer);
 
         const userMediasDOM = mediasPhotographerModel.getMediasCardDOM();
-        // const userImagesDOM = mediasPhotographerModel.getImagesCardDOM();
-        // const userVideosDOM = mediasPhotographerModel.getVideosCardDOM();
 
         // j'insere le bloc dans la page html dans le bloc .medias-wrapper
         mediasPhotographersSection.insertAdjacentHTML('beforeEnd', userMediasDOM, );
     });
-
-}
-
-// /
-//  * tri les données par popularité
-//  * @param {array} datas
-//  * @returns {array}
-//  */
-function getDataByPop(datas) {
-  return datas.sort((a, b) => {
-    // 'b'(par sa position) sera la reference et sera comparé à 'a', qui sera l'élément suivant
-    // b > a
-    return b.likes - a.likes;
-  });
-}
-
-// /
-//  * tri les données par titre
-//  * @param {array} datas
-//  * @returns {array}
-//  */
-function getDataByTitle(datas) {
-  return datas.sort((a, b) => {
-    return a.title.localeCompare(b.title);
-  });
-}
-
-/**
- * tri les données par date
- * @param {array} datas
- * @returns {array}
- */
-function getDataByDate(datas) {
-  return datas.slice().sort((a, b) => {
-    // a < b
-    const valueA = new Date(a.date);
-    const valueB = new Date(b.date);
-    return valueB - valueA;
-  });
 }

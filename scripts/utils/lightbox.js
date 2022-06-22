@@ -1,136 +1,103 @@
-/**
- * @property {HTMLElement} element
- */
-class LightBox
-{
-    /**
-     * @param {string} datas url de l'image
-     */
-    constructor(datas)
+//getting all required elements
+// Je prends tous les éléments qui sont dans la gallery
+const gallery = document.querySelectorAll(".image"),
+
+// Je prends la lightbox
+previewBox = document.querySelector(".preview-box"),
+
+previewImg = previewBox.querySelector("img"),
+
+closeIcon = previewBox.querySelector(".icon"),
+
+currentImg = previewBox.querySelector(".current-img"),
+
+totalImg = previewBox.querySelector(".total-img"),
+
+shadow = document.querySelector(".shadow");
+
+window.onload = ()=>{
+    for (let i = 0; i < gallery.length; i++)
     {
-        this.datas = datas
+        totalImg.textContent = gallery.length; //passing total img length to totalImg variable
+
+        dbg(totalImg.textContent)
+
+        let newIndex = i; //passing i value to newIndex variable
+
+        let clickedImgIndex; //creating new variable
         
-        this.buildDOM()
-        this.loadImage(datas)
-        document.body.appendChild(this.element)
-    }
+        gallery[i].onclick = () =>{
+            clickedImgIndex = i; //passing cliked image index to created variable (clickedImgIndex)
 
-    static init()
-    {
-        const links = document.querySelectorAll('img[src$=".png"], img[src$=".jpg"], img[src$=".jpeg"]')
-            console.log(links)
-
-            .forEach(link => link.addEventListener('click', e =>
+            function preview()
             {
-                console.log(e)
-                alert("test")
-                e.preventDefault()
-                new LightBox(e.currentTarget.getAttribute('href'))
-            }))
-    }
+                currentImg.textContent = newIndex + 1; //passing current img index to currentImg varible with adding +1
+
+                let imageURL = gallery[newIndex].querySelector("img").src; //getting user clicked img url
+
+                previewImg.src = imageURL; //passing user clicked img url in previewImg src
+            }
+            preview(); //calling above function
     
- 
+            const prevBtn = document.querySelector(".prev");
 
-    /**
-     * @param {string} datas url de l'image
-     */
-    loadImage(datas)
-    {
-        const image = new Image()
+            const nextBtn = document.querySelector(".next");
 
-        const container = this.element.querySelector('.lightbox__container')
-        
-        const loader = document.createElement('div')
+            if(newIndex == 0)//if index value is equal to 0 then hide prevBtn
+            {
+                prevBtn.style.display = "none"; 
+            }
+            if(newIndex >= gallery.length - 1)//if index value is greater and equal to gallery length by -1 then hide nextBtn
+            {
+                nextBtn.style.display = "none"; 
+            }
+            prevBtn.onclick = ()=>{ 
+                newIndex--; //decrement index
+                if(newIndex == 0)
+                {
+                    preview(); 
+                    prevBtn.style.display = "none"; 
+                }
+                else
+                {
+                    preview();
+                    nextBtn.style.display = "block";
+                } 
+            }
+            nextBtn.onclick = ()=>{ 
+                newIndex++; //increment index
 
-        loader.classList.add('lightbox-loader')
+                if(newIndex >= gallery.length - 1)
+                {
+                    preview(); 
+                    nextBtn.style.display = "none";
+                }
+                else
+                {
+                    preview(); 
+                    prevBtn.style.display = "block";
+                }
+            }
 
-        container.appendChild(loader)
+            document.querySelector("body").style.overflow = "hidden";
 
-        image.onload = function()
-        {
-            console.log('chargé')
+            previewBox.classList.add("show"); 
+
+            shadow.style.display = "block"; 
+
+            closeIcon.onclick = ()=>{
+                newIndex = clickedImgIndex; //assigning user first clicked img index to newIndex
+
+                prevBtn.style.display = "block"; 
+
+                nextBtn.style.display = "block";
+
+                previewBox.classList.remove("show");
+
+                shadow.style.display = "none";
+
+                document.querySelector("body").style.overflow = "scroll";
+            }
         }
-
-        image.src = datas
-    }
-
-    // Bloc html à afficher dans la lightbox
-    /* <div class="lightbox-background">
-
-        <div class="lightbox">
-
-            <button class="lightbox__close"><i class="fas fa-times"></i></button>
-            <button class="lightbox__next"><i class="fas fa-angle-right"></i></button>
-            <button class="lightbox__prev"><i class="fas fa-angle-left"></i></button>
-
-            <div class="lightbox__container">
-                <div class="lightbox-loader"></div>
-                <img src="${url}" alt="">
-                <img src="https://picsum.photos/seed/picsum/1920/1080" alt="">
-            </div>
-
-        </div>
-
-    </div>  */
-
-    /**
-     * @param {string} datas URL de l'image
-     * @return {HTMLElement}
-     */
-    buildDOM(datas)
-    {
-        const dom = document.createElement('div')
-        dom.classList.add('lightbox-background')
-        dom.innerHTML = `
-            <div class="lightbox">
-
-                <button class="lightbox__close"><i class="fas fa-times"></i></button>
-                <button class="lightbox__next"><i class="fas fa-angle-right"></i></button>
-                <button class="lightbox__prev"><i class="fas fa-angle-left"></i></button>
-
-                <div class="lightbox__container">
-                    <div class="lightbox-loader"></div>
-                </div>
-
-            </div>`;
-
-        return dom
-    }
-
-
-    /**
-     * @param {MouseEvent|KeyboardEvent} e 
-     */
-    prev (e)
-    {
-        e.preventDefault()
-
-        let i = this.images.findIndex(image => image === this.datas)
-
-        if (i === 0)
-        {
-            i = this.images.length
-        }
-
-        this.loadImage(this.images[i - 1])
-    }
-
-    /**
-     * @param {MouseEvent|KeyboardEvent} e 
-     */
-    next (e)
-    {
-        e.preventDefault()
-
-        let i = this.images.findIndex(image => image === this.datas)
-
-        if (i === this.images.length - 1)
-        {
-            i = -1
-        }
-
-        this.loadImage(this.images[i + 1])
-    }
+    } 
 }
-
-LightBox.init();

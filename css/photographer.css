@@ -103,7 +103,7 @@ select
     color: white;
     font-size: 18px;
     font-weight: 700;
-    padding: 22px;
+    padding: 20px;
     border-radius: 5px;
 }
 select:hover
@@ -231,7 +231,7 @@ select:focus, select:active
 }
 
 /* LIGHTBOX */
-.lightbox-background
+/* .lightbox-background
 {
     background-color: rgba(255, 255, 255, 0.9); 
     position: fixed;
@@ -252,11 +252,11 @@ select:focus, select:active
     height: 90%;
     background-color: rgba(255, 255, 255, 0.9);
     z-index: 100;
-    /* overflow: hidden; */
+
     animation: lightboxIn 0.5s;
-}
+} */
 /* fleches de la lighbox */
-.lightbox__prev, .lightbox__next
+/* .lightbox__prev, .lightbox__next
 {
     font-size: 48px;
     color: #901C1C;
@@ -277,9 +277,9 @@ select:focus, select:active
 .lightbox__next
 {
     right: 0;
-}
+} */
 /* croix close de la lightbox */
-.lightbox__close
+/* .lightbox__close
 {
     font-size: 42px;
     color: #901C1C;
@@ -290,9 +290,9 @@ select:focus, select:active
     top: 6px;
     right: 6px;
     z-index: 120;
-}
+} */
 /* effet au hover des boutons */
-.lightbox button
+/* .lightbox button
 {
     cursor: pointer;
     transition: 400ms;
@@ -316,9 +316,9 @@ select:focus, select:active
     max-height: 100%;
     height: auto;
     animation: lightboxIn 0.5s;
-}
+} */
 /* loader au chargement d'une image */
-.lightbox-loader
+/* .lightbox-loader
 {
     width: 40px;
     height: 40px;
@@ -335,7 +335,7 @@ select:focus, select:active
     {
         opacity: 1;
     }
-}
+} */
 
 
 

@@ -2,8 +2,8 @@
 // {
 //     const { name, portrait, city, country, tagline, price } = data;
 
-//     // console.log("photographerFactory retourne:");
-//     // console.log({ name, portrait, city, country, tagline, price });
+//     // dbg.log("photographerFactory retourne:");
+//     // dbg.log({ name, portrait, city, country, tagline, price });
 
 //     const picture = `assets/photographers/${name}/${portrait}`;
 
@@ -40,7 +40,7 @@
 
 //         // on voit le resultat produit
 
-//         console.log(article)
+//         dbg.log(article)
 
 //         // on retourne article
 //         return (article);
