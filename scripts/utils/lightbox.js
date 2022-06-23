@@ -70,9 +70,9 @@ function openLightBox(id)
 // je ferme le lightbox
 function closeLightBox()
 {
+    // je vide la lightbox
     lightboxcontainer.innerHTML="";
 
+    // le ferme la lightbox
     document.querySelector(".lightbox-container").classList.add("d-none")
-
-    // lightboxcontainer.insertAdjacentHTML('beforeEnd', lighboxDOM);
 }
