@@ -22,7 +22,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
             return `
                 <div class="medias-cards">
 
-                    <div class="vid cards" onclick="openLightBox()">
+                    <div class="vid cards" onclick="openLightBox(${id})">
                         <video src="${vid}" type="video/mp4"></video>
                     </div>
 
@@ -43,7 +43,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
             return `
                 <div class="medias-cards">
 
-                    <div class="img cards" onclick="openLightBox()">
+                    <div class="img cards" onclick="openLightBox(${id})">
                         <img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}">
                     </div>
         
