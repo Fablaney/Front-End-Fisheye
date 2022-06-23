@@ -54,7 +54,7 @@ function openLightBox(id)
             else
             {
                 return `<img class="" src="${img}" alt="Photo de ${name}" data-id="${imgId}">`
-            ;}
+            }
         }
         // return getLightBox;
 
@@ -72,7 +72,7 @@ function openLightBox(id)
 
     next()
     {
-        
+
     }
 }
 
