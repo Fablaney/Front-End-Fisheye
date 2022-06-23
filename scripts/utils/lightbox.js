@@ -1,3 +1,7 @@
+// je récupere la lightbox pour y inserer l'image
+const lightboxcontainer = document.querySelector(".lightbox-content")
+// console.log(lightboxcontainer)
+
 // j'ouvre le lightbox
 function openLightBox(id)
 {
@@ -9,10 +13,6 @@ function openLightBox(id)
     // affichage du contenu de la lightbox
     function displayLightBox()
     {
-        // je récupere la lightbox pour y inserer l'image
-        const lightboxcontainer = document.querySelector(".lightbox-content")
-        // console.log(lightboxcontainer)
-
         // console.log(mediasOfPhotographer)
 
         // je récupere l'image qui à été cliquée en retriant "mediasOfPhotographer" par l'id de l'image
@@ -49,11 +49,11 @@ function openLightBox(id)
         const getLightBox = () => {
             if(video !== undefined)
             {
-                return `<video src="${vid}" type="video/mp4"></video>`
+                return `<video src="${vid}" type="video/mp4" data-id="${imgId}"></video>`
             }
             else
             {
-                return `<img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}">`
+                return `<img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}" data-id="${imgId}">`
             ;}
         }
         // return getLightBox;
@@ -70,5 +70,9 @@ function openLightBox(id)
 // je ferme le lightbox
 function closeLightBox()
 {
+    lightboxcontainer.innerHTML="";
+
     document.querySelector(".lightbox-container").classList.add("d-none")
+
+    // lightboxcontainer.insertAdjacentHTML('beforeEnd', lighboxDOM);
 }
