@@ -64,6 +64,16 @@ function openLightBox(id)
         lightboxcontainer.insertAdjacentHTML('beforeEnd', lighboxDOM);
     }
     displayLightBox()
+
+    prev()
+    {
+
+    }
+
+    next()
+    {
+        
+    }
 }
 
 
