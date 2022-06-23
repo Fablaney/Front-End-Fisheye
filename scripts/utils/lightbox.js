@@ -56,12 +56,12 @@ function openLightBox(id)
                 return `<img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}">`
             ;}
         }
-        return getLightBox;
+        // return getLightBox;
 
         const lighboxDOM = getLightBox()
 
         // j'insere le bloc html image ou vidéo dans la div d ela lightbox
-        insertAdjacentHTML('beforeEnd', lighboxDOM);
+        lightboxcontainer.insertAdjacentHTML('beforeEnd', lighboxDOM);
     }
     displayLightBox()
 }
