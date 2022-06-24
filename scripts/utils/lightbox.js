@@ -1,27 +1,22 @@
 // je récupere la lightbox pour y inserer l'image
 const lightboxcontainer = document.querySelector(".lightbox-content")
-// console.log(lightboxcontainer)
 
 // j'ouvre le lightbox
 function openLightBox(id)
 {
-    // console.log(id)
-
     // je change la class en d-block pour ouvrir la modale
     document.querySelector(".lightbox-container").classList.remove("d-none")
 
     // affichage du contenu de la lightbox
     function displayLightBox()
     {
-        // console.log(mediasOfPhotographer)
-
         // je récupere l'image qui à été cliquée en retriant "mediasOfPhotographer" par l'id de l'image
-        let displayimg = mediasOfPhotographer.find(media => media.id === id)
+        let lightBoxMedias = mediasOfPhotographer.find(media => media.id === id)
 
-        let currentIndex = displayimg.index
+        let currentIndex = lightBoxMedias.index
 
         // image
-        console.log(displayimg)
+        console.log(lightBoxMedias)
 
         document.querySelector(".lightbox__prev").addEventListener("click", () => { 
             console.log(currentIndex)
@@ -54,34 +49,19 @@ function openLightBox(id)
 
         function displayMedia()
         {
-            displayimg = mediasOfPhotographer[currentIndex]
+            lightBoxMedias = mediasOfPhotographer[currentIndex]
 
             console.log()
     
-            // id de l'image
-            let imgId = displayimg.id
-            // console.log(imgId)
-    
-            // titre du media
-            let title = displayimg.title
-            // console.log(title)
-
             // titre de l'image
-            let image = displayimg.image
-            // console.log(image)
-    
+            let image = lightBoxMedias.image
+
             // titre de la video
-            let video = displayimg.video
-            // console.log(video)
-    
-            // titre de la video
-            let mediaIndex = displayimg.index
-            // console.log(mediaIndex)
-    
+            let video = lightBoxMedias.video
+
             // nom du photographe
             let name = onePhotographer.name
-            // console.log(name)
-    
+
             // Je récupere le nom du photographe et le nom de l'image pour créer le chemin
             const img = `assets/photographers/${name}/${image}`;
             const vid = `assets/photographers/${name}/${video}`;
