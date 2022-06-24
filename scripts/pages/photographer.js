@@ -43,6 +43,12 @@ async function getPhotographeMedias()
     mediasOfPhotographer = photographerMedias.media.filter(medias => medias.photographerId === idPhotograph);
     // console;log.log(mediasOfPhotographer)
 
+    for (let i = 0; i< mediasOfPhotographer.length; i++)
+    {
+        mediasOfPhotographer[i].index = i;
+    }
+    // console.table(mediasOfPhotographer)
+
     return mediasOfPhotographer
 }
 
