@@ -16,7 +16,7 @@ function openLightBox(id)
         let currentIndex = lightBoxMedias.index
 
         // je récupere le click sur les boutons prev et next
-        document.querySelector(".lightbox__prev").addEventListener("click", () => { 
+        document.querySelector(".lightbox__prev").addEventListener("click", () => {
             if (currentIndex === 0)
             {
                 currentIndex = mediasOfPhotographer.length - 1
@@ -87,7 +87,7 @@ function openLightBox(id)
 function closeLightBox()
 {
     // je vide la lightbox
-    lightboxcontainer.innerHTML="";
+    lightboxcontainer.innerHTML = "";
 
     // le ferme la lightbox
     document.querySelector(".lightbox-container").classList.add("d-none")
