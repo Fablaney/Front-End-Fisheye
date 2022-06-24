@@ -1,16 +1,74 @@
 .contact_modal
 {
-
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     width: 100vw;
-
+    background-color: rgba(255, 255, 255, 0.9); 
     display: flex;
     align-items: center;
-}
 
+    overflow: auto;
+}
+.modal
+{
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    padding: 35px;
+    margin: auto;
+    position: relative;
+}
+/* croix pour fermer la modale */
+.modal>img
+{
+    cursor: pointer;
+    position: absolute;
+    top: 35px;
+    right: 35px;
+}
+.modal>h2 , .modal>h3
+{
+    margin: 0px;
+    font-size: 64px;
+    font-weight: normal;
+}
+form
+{
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+form>div
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+}
+form>div>label
+{
+    color: #312E2E;
+    font-size: 36px;
+}
+form>div>input
+{
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+}
+form>div>textarea
+{
+    width: 100%;
+    height: 170px;
+    border: none;
+    border-radius: 5px;
+}
+/* bouton de validation */
 .contact_button
 {
     font-size: 20px;
@@ -23,58 +81,4 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
-}
-
-.modal header {
-    justify-content: space-between;
-    width: 100%;
-}
-
-.modal header img {
-    cursor: pointer;
-}
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-}
-
-form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-form label {
-    color: #312E2E;
-    font-size: 36px;
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-}
-
-form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
 }
