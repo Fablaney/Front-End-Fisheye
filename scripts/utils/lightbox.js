@@ -15,12 +15,8 @@ function openLightBox(id)
 
         let currentIndex = lightBoxMedias.index
 
-        // image
-        console.log(lightBoxMedias)
-
+        // je récupere le click sur les boutons prev et next
         document.querySelector(".lightbox__prev").addEventListener("click", () => { 
-            console.log(currentIndex)
-
             if (currentIndex === 0)
             {
                 currentIndex = mediasOfPhotographer.length - 1
@@ -33,8 +29,6 @@ function openLightBox(id)
             displayMedia()
         })
         document.querySelector(".lightbox__next").addEventListener("click", () => {
-            console.log(currentIndex)
-
             if (currentIndex === mediasOfPhotographer.length -1)
             {
                 currentIndex = 0

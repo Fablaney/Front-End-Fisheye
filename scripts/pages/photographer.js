@@ -179,13 +179,6 @@ function sortBy(value)
     // document.querySelector(".medias-wrapper").removeChild(document.querySelectorAll("medias-cards").forEach( (elt)=>{ elt.remove() } ) )
     document.querySelectorAll("medias-cards").forEach( (elt)=>{ elt.remove() } )
 
-    // console;log("Je récupere la valeur du select = " + value)
-
-    // console;log("Je récupere les medias du photographe")
-    // console;log(mediasOfPhotographer)
-
-    // console;log("Je trie par : " + value)
-
     let mediasSorteds; 
 
     if ( value == "likes")
@@ -239,8 +232,6 @@ function sortBy(value)
         mediasSorteds = getDataByTitle(mediasOfPhotographer)
     }
 
-    // console;log(mediasSorteds)
-    
     // je selectionne le bloc html ou je vais re-afficher les medias triés par ... 
     const mediasPhotographersSection = document.querySelector(".medias-wrapper");
 
