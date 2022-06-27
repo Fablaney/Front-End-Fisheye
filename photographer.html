@@ -60,31 +60,42 @@
     <div class="contact_modal d-none">
         <!-- <div class="modal">
 
-            <header>
-
                 <h2>Contactez-moi</h2>
 
                 <h3></h3>
 
                 <img src="assets/icons/close.svg" onclick="closeModal()"/>
 
-            </header>
+                <form id="form-modal">
 
-            <form>
+                    <div>
+                        <label for="prenom">Prénom</label>
+                        <input name="prenom" id="prenom" type="text" required/>
+                    </div>
 
-                <div>
-                    <label>Prénom</label>
-                    <input/>
-                </div>
+                    <div>
+                        <label for="nom">Nom</label>
+                        <input name="nom" id="nom" type="text" required/>
+                    </div>
 
-                <button class="contact_button">Envoyer</button>
+                    <div>
+                        <label for="email">Email</label>
+                        <input name="email" id="email" type="email" required/>
+                    </div>
 
-            </form>
+                    <div>
+                        <label for="message">Votre message</label>
+                        <textarea name="message" id="message" type="text" required></textarea>
+                    </div>
 
-        </div> -->
+                    <button class="contact_button" onclick="validateModal()">Envoyer</button>
+
+                </form>
+
+            </div> -->
     </div>
 
-    <!-- lightbox test -->
+    <!-- lightbox -->
     <div class="lightbox-container d-none">
         <div class="lightbox">
             <button class="lightbox__close" onclick="closeLightBox()"><i class="fas fa-times"></i></button>
