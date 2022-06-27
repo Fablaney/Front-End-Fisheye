@@ -62,17 +62,13 @@ function openLightBox(id)
             const getLightBox = () => {
                 if(video !== undefined)
                 {
-                    return `
-                                <video class="w-100" src="${vid}" type="video/mp4" controls></video>
-                                <div>${video}</div>
-                            `
+                    return `<video class="w-100" src="${vid}" type="video/mp4" controls></video>
+                            <div class="title-lightbox">${video}</div>`
                 }
                 else
                 {
-                    return `
-                                <img class="w-100" src="${img}" alt="Photo de ${name}">
-                                <div>${image}</div>
-                            `
+                    return `<img class="w-100" src="${img}" alt="Photo de ${name}">
+                            <div class="title-lightbox">${image}</div>`
                 }
             }
 
