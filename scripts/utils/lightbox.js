@@ -64,12 +64,12 @@ function openLightBox(id)
             const getLightBox = () => {
                 if(video !== undefined)
                 {
-                    return `<video class="" src="${vid}" type="video/mp4" controls></video>
+                    return `<video src="${vid}" type="video/mp4" controls aria-label="Liliac breasted roller"></video>
                             <div class="title-lightbox">${titre}</div>`
                 }
                 else
                 {
-                    return `<img class="" src="${img}" alt="Photo de ${name}">
+                    return `<img src="${img}" alt="Photo de ${name}" aria-label="Liliac breasted roller">
                             <div class="title-lightbox">${titre}</div>`
                 }
             }
@@ -79,7 +79,7 @@ function openLightBox(id)
             // j'insere le bloc html image ou vidéo dans la div de la lightbox
             lightboxcontainer.innerHTML = lighboxDOM; 
         }
-        displayMedia()  
+        displayMedia()
     }
     displayLightBox()
 }

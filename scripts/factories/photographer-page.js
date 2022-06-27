@@ -14,13 +14,11 @@ function photographerFactorySingle(data)
                 </div>
 
                 <div class="justify-center">
-                    <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+                    <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
                 </div>
 
                 <div class="justify-center">
-                    <a class="single-photograph-img" href="photographer.html?id=${id}">
-                        <img class="portrait" src="${picture}" alt="Photo de ${name}">
-                    </a>
+                    <img class="portrait" src="${picture}" alt="${name}">
                 </div>
               `;
     

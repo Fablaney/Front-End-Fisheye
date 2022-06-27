@@ -24,7 +24,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
 
                     <a href="#">
                         <div class="vid cards" onclick="openLightBox(${id})">
-                            <video src="${vid}" type="video/mp4"></video>
+                            <video src="${vid}" type="video/mp4" aria-label="Liliac Breasted roller, closeup view"></video>
                         </div>
                     </a>
 
@@ -34,7 +34,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                         </div>
 
                         <div class="likes" id="likes-${id}">
-                            <span>${likes}</span> <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"></i>
+                            <span>${likes}</span> <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"  aria-label="likes"></i>
                         </div>
                     </div>
                     
@@ -47,7 +47,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
 
                     <a href="#">
                         <div class="img cards" onclick="openLightBox(${id})">
-                            <img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}">
+                            <img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}" aria-label="Liliac Breasted roller, closeup view">
                         </div>
                     </a>
 

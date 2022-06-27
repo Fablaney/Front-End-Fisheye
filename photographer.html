@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 
     <!-- CSS only -->
@@ -22,7 +22,7 @@
 
     <header>
 
-        <a href="index.html"><img src="assets/images/logo.png" class="logo"/></a>
+        <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" aria-label="Fisheye Home page"/></a>
 
     </header>
 
@@ -62,11 +62,11 @@
     </div>
 
     <!-- lightbox -->
-    <div class="lightbox-container d-none">
-        <div class="lightbox">
-            <button class="lightbox__close" onclick="closeLightBox()"><i class="fas fa-times"></i></button>
-            <button class="lightbox__prev"><i class="fas fa-angle-left"></i></button>
-            <button class="lightbox__next"><i class="fas fa-angle-right"></i></button>
+    <div class="lightbox-container d-none" role="dialog">
+        <div class="lightbox" aria-label="image closeup view">
+            <button class="lightbox__close" onclick="closeLightBox()" aria-label="Close dialog"><i class="fas fa-times"></i></button>
+            <button class="lightbox__prev" aria-label="Previous image"><i class="fas fa-angle-left"></i></button>
+            <button class="lightbox__next" aria-label="Next image"><i class="fas fa-angle-right"></i></button>
             
             <div class="lightbox-content">
                 <!-- ici s'affiche le media -->

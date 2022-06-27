@@ -83,3 +83,9 @@ h1
     font-size: 9px;
     color: #757575;
 }
+
+/* ville, pays du photographe */
+.photographer_section>article>.info>a
+{
+    text-decoration: none;
+}
