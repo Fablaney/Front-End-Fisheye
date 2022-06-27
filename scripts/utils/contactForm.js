@@ -51,9 +51,10 @@ function displayModal()
  
 }
 
-function validateModal(event)
+function validateModal()
 {
-    event.preventDefault()
+    document.querySelector("#form-modal").preventDefault()
+    
 
     let formNom = document.querySelector("#nom")
     console.log(formNom)
@@ -66,6 +67,8 @@ function validateModal(event)
 
     let formMessage = document.querySelector("#message")
     console.log(formMessage)
+
+    closeModal()
 } 
 
 // fermeture de la modale
