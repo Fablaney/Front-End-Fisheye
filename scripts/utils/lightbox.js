@@ -45,6 +45,8 @@ function openLightBox(id)
         {
             lightBoxMedias = mediasOfPhotographer[currentIndex]
     
+            // titre
+            let titre = lightBoxMedias.title
             // titre de l'image
             let image = lightBoxMedias.image
 
@@ -62,13 +64,13 @@ function openLightBox(id)
             const getLightBox = () => {
                 if(video !== undefined)
                 {
-                    return `<video class="w-100" src="${vid}" type="video/mp4" controls></video>
-                            <div class="title-lightbox">${video}</div>`
+                    return `<video class="" src="${vid}" type="video/mp4" controls></video>
+                            <div class="title-lightbox">${titre}</div>`
                 }
                 else
                 {
-                    return `<img class="w-100" src="${img}" alt="Photo de ${name}">
-                            <div class="title-lightbox">${image}</div>`
+                    return `<img class="" src="${img}" alt="Photo de ${name}">
+                            <div class="title-lightbox">${titre}</div>`
                 }
             }
 
