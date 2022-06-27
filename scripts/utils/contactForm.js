@@ -53,8 +53,6 @@ function displayModal()
 
 function validateModal()
 {
-    submit(e) => {e.preventDefault()} 
-
     let formNom = document.querySelector("#nom")
     console.log(formNom)
     
