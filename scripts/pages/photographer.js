@@ -161,14 +161,14 @@ function addordislike(id)
         // console;log("c'est pas liké j'ajoute 1")
         media.likes++
 
-        // console;log("j'ajoute la class liked au coeur ")
+        // console;log("j'ajoute la class liked au coeur")
         document.querySelector("#likes-" + id + " i").classList.add("liked")
 
         // console;log("j'ajoute + 1 au compte global")
         document.querySelector(".likes-count").innerHTML++
     }
 
-    // console;log("j'ajoute + 1 aux likes de l'image ")
+    // console;log("j'ajoute + 1 aux likes de l'image")
     document.querySelector("#likes-" + id + " span").innerText = media.likes
 }
 
@@ -181,7 +181,7 @@ function sortBy(value)
 
     let mediasSorteds;
 
-    if ( value == "likes")
+    if (value == "likes")
     {
         /**
          * tri les données par popularité

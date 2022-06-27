@@ -16,7 +16,8 @@ function openLightBox(id)
         let currentIndex = lightBoxMedias.index
 
         // je récupere le click sur les boutons prev et next et navigue sur les indexs
-        document.querySelector(".lightbox__prev").addEventListener("click", () => {
+        function prev()
+        {
             if (currentIndex === 0)
             {
                 currentIndex = mediasOfPhotographer.length - 1
@@ -27,8 +28,9 @@ function openLightBox(id)
             }
 
             displayMedia()
-        })
-        document.querySelector(".lightbox__next").addEventListener("click", () => {
+        } 
+        function next()
+        {
             if (currentIndex === mediasOfPhotographer.length -1)
             {
                 currentIndex = 0
@@ -37,9 +39,9 @@ function openLightBox(id)
             {
                 currentIndex++
             }
-
+        
             displayMedia()
-        })
+        }
 
         function displayMedia()
         {
@@ -47,6 +49,7 @@ function openLightBox(id)
     
             // titre
             let titre = lightBoxMedias.title
+
             // titre de l'image
             let image = lightBoxMedias.image
 
@@ -77,9 +80,37 @@ function openLightBox(id)
             const lighboxDOM = getLightBox()
 
             // j'insere le bloc html image ou vidéo dans la div de la lightbox
-            lightboxcontainer.innerHTML = lighboxDOM; 
+            lightboxcontainer.innerHTML = lighboxDOM;
         }
-        displayMedia()
+        displayMedia()  
+
+        function listener()
+        {
+            document.querySelector(".lightbox__prev").addEventListener("click", () => {
+                prev()
+            })
+
+            document.querySelector(".lightbox__next").addEventListener("click", () => {
+                next()
+            })
+
+            document.addEventListener('keyup', (el) =>{
+                switch(el.key)
+                {
+                    case "ArrowLeft" :
+                        prev(); 
+                        break; 
+                    case "ArrowRight": 
+                        next();
+                        break; 
+                    case "Escape" : 
+                        closeLightBox(); 
+                        break; 
+                }
+                console.log(el.key)
+            })
+        }
+        listener()
     }
     displayLightBox()
 }
