@@ -44,8 +44,6 @@ function openLightBox(id)
         function displayMedia()
         {
             lightBoxMedias = mediasOfPhotographer[currentIndex]
-
-            console.log()
     
             // titre de l'image
             let image = lightBoxMedias.image
@@ -74,8 +72,7 @@ function openLightBox(id)
             const lighboxDOM = getLightBox()
 
             // j'insere le bloc html image ou vidéo dans la div de la lightbox
-            lightboxcontainer.innerHTML = lighboxDOM;
-            
+            lightboxcontainer.innerHTML = lighboxDOM; 
         }
         displayMedia()  
     }

@@ -15,7 +15,7 @@ function displayModal()
 
                     <img src="assets/icons/close.svg" onclick="closeModal()"/>
 
-                    <form id="form-modal">
+                    <form method="post" id="form-modal">
 
                         <div>
                             <label for="prenom">Prénom</label>
@@ -48,24 +48,29 @@ function displayModal()
 
     // j'insere le bloc html  du formulaire dans la modale
     document.querySelector(".contact_modal").innerHTML = modalDOM;
- 
+
+    let form = document.getElementById("form-modal")
+
+    form.addEventListener('submit', function(e){ 
+        e.preventDefault()
+        let formNom = document.querySelector("#nom")
+        console.log(formNom)
+    })
 }
 
 
 function validateModal()
 {
-    document.querySelector("#form-modal").preventDefault()
-
-    let formNom = document.querySelector("#nom")
+    let formNom = document.querySelector("#nom").value
     console.log(formNom)
     
-    let formPrenom = document.querySelector("#prenom")
+    let formPrenom = document.querySelector("#prenom").value
     console.log(formPrenom)
 
-    let formEmail = document.querySelector("#email")
+    let formEmail = document.querySelector("#email").value
     console.log(formEmail)
 
-    let formMessage = document.querySelector("#message")
+    let formMessage = document.querySelector("#message").value
     console.log(formMessage)
 
     closeModal()
