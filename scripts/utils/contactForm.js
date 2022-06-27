@@ -1,5 +1,6 @@
 function displayModal()
 {
+    // J'enleve le d-none sur la modale
     document.querySelector(".contact_modal").classList.remove("d-none")
 
     // nom du photographe
@@ -49,32 +50,35 @@ function displayModal()
     // j'insere le bloc html  du formulaire dans la modale
     document.querySelector(".contact_modal").innerHTML = modalDOM;
 
+
     let form = document.getElementById("form-modal")
 
-    form.addEventListener('submit', function(e){ 
+    // J'empeche l'envoie du formulaire
+    form.addEventListener('submit', function(e)
+    { 
         e.preventDefault()
-        let formNom = document.querySelector("#nom")
-        console.log(formNom)
     })
 }
 
 
 function validateModal()
 {
+    // Je récupere la valeur du champ et l'affiche en console
     let formNom = document.querySelector("#nom").value
-    console.log(formNom)
+    console.log("Nom : " + formNom)
     
     let formPrenom = document.querySelector("#prenom").value
-    console.log(formPrenom)
+    console.log("Prénom : " + formPrenom)
 
     let formEmail = document.querySelector("#email").value
-    console.log(formEmail)
+    console.log("Email : " + formEmail)
 
     let formMessage = document.querySelector("#message").value
-    console.log(formMessage)
+    console.log("Message: " + formMessage)
 
     closeModal()
 } 
+
 
 // fermeture de la modale
 function closeModal()

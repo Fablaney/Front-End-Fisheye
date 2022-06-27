@@ -62,13 +62,16 @@ function openLightBox(id)
             const getLightBox = () => {
                 if(video !== undefined)
                 {
-                    return `<video class="w-100" src="${vid}" type="video/mp4" controls></video>`
+                    return `<video class="w-100" src="${vid}" type="video/mp4" controls></video>
+                            <div>${video}</div>`
                 }
                 else
                 {
-                    return `<img class="" src="${img}" alt="Photo de ${name}">`
+                    return `<img class="" src="${img}" alt="Photo de ${name}">
+                            <div>${image}</div>`
                 }
             }
+
             const lighboxDOM = getLightBox()
 
             // j'insere le bloc html image ou vidéo dans la div de la lightbox
