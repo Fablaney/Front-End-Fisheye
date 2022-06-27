@@ -51,8 +51,10 @@ function displayModal()
  
 }
 
-function validateModal()
+function validateModal(event)
 {
+    event.preventDefault()
+
     let formNom = document.querySelector("#nom")
     console.log(formNom)
     
