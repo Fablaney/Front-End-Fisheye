@@ -15,7 +15,7 @@ function openLightBox(id)
 
         let currentIndex = lightBoxMedias.index
 
-        // je récupere le click sur les boutons prev et next
+        // je récupere le click sur les boutons prev et next et navigue sur les indexs
         document.querySelector(".lightbox__prev").addEventListener("click", () => {
             if (currentIndex === 0)
             {
@@ -62,13 +62,17 @@ function openLightBox(id)
             const getLightBox = () => {
                 if(video !== undefined)
                 {
-                    return `<video class="w-100" src="${vid}" type="video/mp4" controls></video>
-                            <div>${video}</div>`
+                    return `
+                                <video class="w-100" src="${vid}" type="video/mp4" controls></video>
+                                <div>${video}</div>
+                            `
                 }
                 else
                 {
-                    return `<img class="" src="${img}" alt="Photo de ${name}">
-                            <div>${image}</div>`
+                    return `
+                                <img class="w-100" src="${img}" alt="Photo de ${name}">
+                                <div>${image}</div>
+                            `
                 }
             }
 
