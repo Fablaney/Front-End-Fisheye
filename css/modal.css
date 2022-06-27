@@ -7,6 +7,7 @@
     width: 100vw;
     background-color: rgba(255, 255, 255, 0.9); 
     display: flex;
+    justify-content: center;
     align-items: center;
 
     overflow: auto;
@@ -17,7 +18,6 @@
     background-color: #DB8876;
     width: 50%;
     padding: 35px;
-    margin: auto;
     position: relative;
 }
 /* croix pour fermer la modale */
@@ -25,13 +25,13 @@
 {
     cursor: pointer;
     position: absolute;
-    top: 35px;
-    right: 35px;
+    top: 32px;
+    right: 32px;
 }
 .modal>h2 , .modal>h3
 {
     margin: 0px;
-    font-size: 64px;
+    font-size: 40px;
     font-weight: normal;
 }
 form
@@ -52,19 +52,19 @@ form>div
 form>div>label
 {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 20px;
 }
 form>div>input
 {
     width: 100%;
-    height: 68px;
+    height: 40px;
     border: none;
     border-radius: 5px;
 }
 form>div>textarea
 {
     width: 100%;
-    height: 170px;
+    height: 120px;
     border: none;
     border-radius: 5px;
 }
@@ -74,7 +74,7 @@ form>div>textarea
     font-size: 20px;
     font-weight: bold;
     color: white;
-    padding: 11px;
+    padding: 8px;
     width: 170px;
     height: 70px;
     border: none;

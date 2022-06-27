@@ -48,29 +48,25 @@ function displayModal()
 
     // j'insere le bloc html  du formulaire dans la modale
     document.querySelector(".contact_modal").innerHTML = modalDOM;
-
-
-
-    function validateModal(event)
-    {
-        event.preventDefault()
-        document.querySelector("#form-modal").preventDefault()
-        
-        let formnom = document.querySelector("#nom")
-        console.log(formnom)
-        
-        let formprenom = document.querySelector("#prenom")
-        console.log(formprenom)
-    
-        let formemail = document.querySelector("#email")
-        console.log(formemail)
-    
-        let formmessage = document.querySelector("#message")
-        console.log(formmessage)
-    } 
-    
+ 
 }
 
+function validateModal()
+{
+    submit(e) => {e.preventDefault()} 
+
+    let formNom = document.querySelector("#nom")
+    console.log(formNom)
+    
+    let formPrenom = document.querySelector("#prenom")
+    console.log(formPrenom)
+
+    let formEmail = document.querySelector("#email")
+    console.log(formEmail)
+
+    let formMessage = document.querySelector("#message")
+    console.log(formMessage)
+} 
 
 // fermeture de la modale
 function closeModal()
