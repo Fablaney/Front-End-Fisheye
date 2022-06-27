@@ -51,31 +51,25 @@ function displayModal()
  
 }
 
-document.getElementById("form-modal").onsubmit = function() {myFunction()};
 
-function myFunction(event)
+function validateModal()
 {
-    event.preventDefault()
-}
+    document.querySelector("#form-modal").preventDefault()
 
-// function validateModal()
-// {
-//     document.querySelector("#form-modal").preventDefault()
-
-//     let formNom = document.querySelector("#nom")
-//     console.log(formNom)
+    let formNom = document.querySelector("#nom")
+    console.log(formNom)
     
-//     let formPrenom = document.querySelector("#prenom")
-//     console.log(formPrenom)
+    let formPrenom = document.querySelector("#prenom")
+    console.log(formPrenom)
 
-//     let formEmail = document.querySelector("#email")
-//     console.log(formEmail)
+    let formEmail = document.querySelector("#email")
+    console.log(formEmail)
 
-//     let formMessage = document.querySelector("#message")
-//     console.log(formMessage)
+    let formMessage = document.querySelector("#message")
+    console.log(formMessage)
 
-//     closeModal()
-// } 
+    closeModal()
+} 
 
 // fermeture de la modale
 function closeModal()
