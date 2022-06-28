@@ -4,14 +4,6 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
     const { name } = dataPhotographer;
     const { date, id, photographerId, price, title, image, video, likes } = dataMedias;
 
-    // console;log( dataMedias)
-    
-  
-    // console;log( dataMedias.likes)
-
-    // console;log(typeof({likes}))
-    // console;log(typeof(likes))
-
     const img = `assets/photographers/${name}/${image}`;
     const vid = `assets/photographers/${name}/${video}`;
   
@@ -22,9 +14,9 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
             return `
                 <div class="medias-cards">
 
-                    <a href="#">
-                        <div class="vid cards" onclick="openLightBox(${id})">
-                            <video src="${vid}" type="video/mp4" aria-label="Liliac Breasted roller, closeup view"></video>
+                    <a href="#" onclick="openLightBox(${id})" aria-label="Liliac Breasted roller, closeup view">
+                        <div class="vid cards">
+                            <video src="${vid}" type="video/mp4"></video>
                         </div>
                     </a>
 
@@ -45,9 +37,9 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
             return `
                 <div class="medias-cards">
 
-                    <a href="#">
-                        <div class="img cards" onclick="openLightBox(${id})">
-                            <img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}" aria-label="Liliac Breasted roller, closeup view">
+                    <a href="#"onclick=" openLightBox(${id})" aria-label="Liliac Breasted roller, closeup view">
+                        <div class="img cards">
+                            <img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}" >
                         </div>
                     </a>
 

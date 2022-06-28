@@ -10,8 +10,26 @@ function openLightBox(id)
     // affichage du contenu de la lightbox
     function displayLightBox()
     {
-        // je récupere l'image qui à été cliquée en retriant "mediasOfPhotographer" par l'id de l'image
-        let lightBoxMedias = mediasOfPhotographer.find(media => media.id === id)
+        // je crée un tableau vide qui pendra la valeur les medias non triés ou de smedias triés
+        let mediasOfLightbox = []
+   
+        if ( mediasSorteds.length > 0 )
+        {
+            mediasOfLightbox = mediasSorteds
+        }
+        else
+        {
+            mediasOfLightbox = mediasOfPhotographer
+        }
+        
+        // je réinitialise les index des images
+        for (let i = 0; i< mediasOfLightbox.length; i++)
+        {
+            mediasOfLightbox[i].index = i;
+        }
+
+        // je récupere l'image qui à été cliquée en retriant "mediasOfLightbox" par l'id de l'image
+        let lightBoxMedias = mediasOfLightbox.find(media => media.id === id)
 
         let currentIndex = lightBoxMedias.index
 
@@ -20,7 +38,7 @@ function openLightBox(id)
         {
             if (currentIndex === 0)
             {
-                currentIndex = mediasOfPhotographer.length - 1
+                currentIndex = mediasOfLightbox.length - 1
             }
             else
             {
@@ -31,7 +49,7 @@ function openLightBox(id)
         } 
         function next()
         {
-            if (currentIndex === mediasOfPhotographer.length -1)
+            if (currentIndex === mediasOfLightbox.length -1)
             {
                 currentIndex = 0
             }
@@ -45,8 +63,8 @@ function openLightBox(id)
 
         function displayMedia()
         {
-            lightBoxMedias = mediasOfPhotographer[currentIndex]
-    
+            lightBoxMedias = mediasOfLightbox[currentIndex]
+
             // titre
             let titre = lightBoxMedias.title
 

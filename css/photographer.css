@@ -168,6 +168,7 @@ select:focus, select:active
 {
     font-size: 24px;
     color: #901C1C;
+    max-width: 75%;
 }
 .likes
 {
@@ -182,10 +183,12 @@ select:focus, select:active
 .addlike
 {
     cursor: pointer;
+    transition: 300ms;
 }
 .liked
 {
-    color: red !important;  
+    color: #da2d2d !important;  
+    transition: 300ms;
 }
 .video-card
 {

@@ -174,12 +174,14 @@ function addordislike(id)
 
 
 // Fonction SORT BY
+let mediasSorteds = []
+
 function sortBy(value)
 {
     // document.querySelector(".medias-wrapper").removeChild(document.querySelectorAll("medias-cards").forEach( (elt)=>{ elt.remove() } ) )
     document.querySelectorAll("medias-cards").forEach( (elt)=>{ elt.remove() } )
 
-    let mediasSorteds;
+    // let mediasSorteds;
 
     if (value == "likes")
     {
