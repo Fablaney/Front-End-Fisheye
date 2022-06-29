@@ -10,8 +10,6 @@ body
     font-family: "DM Sans", sans-serif;
     margin: 0;
 }
-
-
 header
 {
     display: flex;
@@ -20,19 +18,16 @@ header
     align-items: center;
     height: 90px;
 }
-
 h1
 {
     color: #901C1C;
     margin-right: 100px;
 }
-
 .logo
 {
     height: 50px;
     margin-left: 100px;
 }
-
 .photographer_section
 {
     display: grid;
@@ -42,7 +37,6 @@ h1
     text-align: center;
     margin-bottom: 114px;
 }
-
 .photographer_section article
 {
     justify-self: center;
@@ -88,4 +82,33 @@ h1
 .photographer_section>article>.info>a
 {
     text-decoration: none;
+}
+
+@media (max-width: 992px)
+{
+    header
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 90px;
+    }
+    .logo
+    {
+        height: 30px;
+        margin: auto;
+        margin-top: 1em;
+    }
+    h1
+    {
+        height: 40px;
+        margin: auto;
+    }
+    .photographer_section
+    {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
 }
