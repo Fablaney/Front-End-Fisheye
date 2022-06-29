@@ -5,7 +5,7 @@
     left: 0;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(255, 255, 255, 0.9); 
+    background-color: rgba(0, 0, 0, 0.2); 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,14 +21,14 @@
     position: relative;
 }
 /* croix pour fermer la modale */
-.modal>img
+.modal > header > button
 {
     cursor: pointer;
-    position: absolute;
-    top: 32px;
-    right: 32px;
+    background-color: transparent;
+    outline: none;
+    border: none;
 }
-.modal>h2 , .modal>h3
+.modal > header > div > h2 , .modal > header > div > h3
 {
     margin: 0px;
     font-size: 40px;
@@ -79,4 +79,11 @@ form > div > textarea
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+
+.contact_modal[aria-hidden="true"]
+{
+    visibility: hidden;
+    opacity: 0;
 }

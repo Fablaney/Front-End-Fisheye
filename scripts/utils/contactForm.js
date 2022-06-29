@@ -3,8 +3,9 @@ function displayModal()
     // J'enleve le d-none sur la modale
     document.querySelector(".contact_modal").classList.remove("d-none")
 
-    document.querySelector('.header').setAttribute('aria-hidden', 'true')
-    document.querySelector('#main').setAttribute('aria-hidden', 'true')
+    document.querySelector(".header").setAttribute('aria-hidden', true);
+    document.querySelector("#main").setAttribute('aria-hidden', true);
+    document.querySelector(".contact_modal").setAttribute('aria-hidden', false);
 
     // nom du photographe
     let name = onePhotographer.name
@@ -13,11 +14,18 @@ function displayModal()
      
          return `<div class="modal">
 
-                    <h2 class="w-100">Contactez-moi</h2>
+                    <header>
 
-                    <h3 class="w-100">${name}</h3>
+                        <div>
+                            <h2 class="w-100">Contactez-moi</h2>
+                            <h3 class="w-100">${name}</h3>
+                        </div>
+                        
+                        <button onclick="closeModal()" aria-label="Close Contact Form">
+                            <img src="assets/icons/close.svg"/>
+                        </button>
 
-                    <img src="assets/icons/close.svg" onclick="closeModal()"/>
+                    </header>
 
                     <form method="post" id="form-modal">
 
@@ -35,7 +43,7 @@ function displayModal()
                             <label for="email">Email</label>
                             <input name="email" id="email" type="email" required aria-label="Email">
                         </div>
-                        
+
                         <div>
                             <label for="message">Votre message</label>
                             <textarea name="message" id="message" type="text" required aria-label="Your message"></textarea>
@@ -51,19 +59,16 @@ function displayModal()
     const modalDOM = getModalContent()
 
     // j'insere le bloc html  du formulaire dans la modale
-    document.querySelector(".contact_modal").innerHTML = modalDOM;
- 
-
-    let form = document.getElementById("form-modal")
+    document.querySelector(".contact_modal").innerHTML = modalDOM
 
     // J'empeche l'envoie du formulaire
+    let form = document.getElementById("form-modal")
     form.addEventListener('submit', function(e)
     { 
         e.preventDefault()
     })
 
-
-
+    // acessibilité au clavier
     function listener()
     {
         document.querySelector(".lightbox__prev").addEventListener("click", () => {
@@ -77,16 +82,12 @@ function displayModal()
         document.addEventListener('keyup', (el) =>{
             switch(el.key)
             {
-                case "ArrowLeft" :
-                    prev(); 
-                    break; 
-                case "ArrowRight": 
-                    next();
-                    break; 
+                case "Enter": 
+                    validateModal()
+                    break;
                 case "Escape" : 
                     closeModal()
-                    document.querySelectorAll("body *:not(dialog)").removeAttribue('aria-hidden')
-                    break; 
+                    break;
             }
             console.log(el.key)
         })
@@ -107,7 +108,7 @@ function validateModal()
     formMessage = document.querySelector("#message").value
 
     // Je récupere la valeur du champ et l'affiche en console
-    if ( formNom.length > 0 && formPrenom.length > 0 && formEmail.length > 0 && formMessage.length > 0 )
+    if ( formNom.length > 0 && formPrenom.length > 0 && formEmail.length > 0 && formMessage.length > 0 && formMessage.length != "    ")
     {
         console.log("Nom : " + formNom)
         console.log("Prénom : " + formPrenom)
@@ -115,7 +116,6 @@ function validateModal()
         console.log("Message: " + formMessage)
 
         closeModal()
-     
     }
 } 
 

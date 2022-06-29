@@ -20,13 +20,13 @@
 
 <body>
 
-    <header class="header" aria-hidden>
+    <header class="header" aria-hidden="false">
 
         <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" aria-label="Fisheye Home page"/></a>
 
     </header>
 
-    <main id="main" aria-hidden>
+    <main id="main" aria-hidden="false">
 
         <div class="photograph-header container">
             <!-- Ici s'affiche le header du photographe -->
@@ -57,7 +57,7 @@
     </main>
 
     <!-- modale de formulaire -->
-    <div class="contact_modal d-none" role="dialog">
+    <div class="contact_modal d-none" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
         <!-- ici s'affiche le formulaire de contact -->
     </div>
 

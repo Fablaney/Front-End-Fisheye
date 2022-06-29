@@ -1,6 +1,7 @@
 // je récupere la lightbox pour y inserer l'image
 const lightboxcontainer = document.querySelector(".lightbox-content")
 
+
 // j'ouvre le lightbox
 function openLightBox(id)
 {
