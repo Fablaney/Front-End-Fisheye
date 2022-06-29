@@ -47,6 +47,7 @@ form > div
     flex-direction: column;
     width: 100%;
     margin-bottom: 26px;
+    border: 1px solid red;
 }
 form > div > label
 {
@@ -60,7 +61,7 @@ form > div > input
     border-radius: 5px;
     
 }
-form > div > textarea
+form > div > #textarea
 {
     width: 100%;
     height: 120px;
