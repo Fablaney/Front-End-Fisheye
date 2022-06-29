@@ -4,6 +4,9 @@ function displayModal()
     document.querySelector(".contact_modal").classList.remove("d-none")
 
     document.querySelector(".header").setAttribute('aria-hidden', true);
+
+    document.querySelector("#main").classList.add("d-none")
+    document.querySelector(".header").classList.add("d-none")
     document.querySelector("#main").setAttribute('aria-hidden', true);
     document.querySelector(".contact_modal").setAttribute('aria-hidden', false);
 
@@ -12,16 +15,16 @@ function displayModal()
 
     const getModalContent = () => {
      
-         return `<div class="modal">
+         return `<div class="modal" role="dialog" tabindex="1" aria-labelledby="2">
 
                     <header>
 
-                        <div>
+                        <div aria-label="Contact Me ${name}" tabindex="2">
                             <h2 class="w-100">Contactez-moi</h2>
                             <h3 class="w-100">${name}</h3>
                         </div>
                         
-                        <button onclick="closeModal()" aria-label="Close Contact Form">
+                        <button onclick="closeModal()" aria-label="Close Contact Form" tabindex="12">
                             <img src="assets/icons/close.svg"/>
                         </button>
 
@@ -30,26 +33,26 @@ function displayModal()
                     <form method="post" id="form-modal">
 
                         <div>
-                            <label for="prenom">Prénom</label>
-                            <input name="prenom" id="prenom" type="text" required aria-label="First Name"/>
+                            <label for="prenom" tabindex="3">Prénom</label>
+                            <input name="prenom" id="prenom" type="text" required aria-label="First Name" tabindex="4"/>
                         </div>
 
                         <div>
-                            <label for="nom">Nom</label>
-                            <input name="nom" id="nom" type="text" required aria-label="Last Name"/>
+                            <label for="nom" tabindex="5">Nom</label>
+                            <input name="nom" id="nom" type="text" required aria-label="Last Name" tabindex="6"/>
                         </div>
 
                         <div>
-                            <label for="email">Email</label>
-                            <input name="email" id="email" type="email" required aria-label="Email">
+                            <label for="email" tabindex="7">Email</label>
+                            <input name="email" id="email" type="email" required aria-label="Email" tabindex="8">
                         </div>
 
                         <div>
-                            <label for="message">Votre message</label>
-                            <textarea name="message" id="message" type="text" required aria-label="Your message"></textarea>
+                            <label for="message" tabindex="9" >Votre message</label>
+                            <textarea name="message" id="message" type="text" required aria-label="Your message" tabindex="10"></textarea>
                         </div>
 
-                        <button class="contact_button" onclick="validateModal()" aria-label="Send">Envoyer</button>
+                        <button class="contact_button" onclick="validateModal()" aria-label="Send" tabindex="11">Envoyer</button>
 
                     </form>
 

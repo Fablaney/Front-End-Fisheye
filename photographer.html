@@ -22,7 +22,7 @@
 
     <header class="header" aria-hidden="false">
 
-        <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" aria-label="Fisheye Home page"/></a>
+        <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" aria-label="Fisheye Home page" tabindex="1"/></a>
 
     </header>
 
@@ -35,9 +35,9 @@
         <!-- zone avec le tri par XXX -->
         <div class="container zone-tri">
 
-            <label class="trier-par" for="sort-page">Trier par</label>
+            <label class="trier-par" for="sort-page" tabindex="7">Trier par</label>
 
-            <select name="sortby" id="sort-page" onchange="sortBy(value)">
+            <select name="sortby" id="sort-page" onchange="sortBy(value)" tabindex="8">
                 <option class="option" disabled selected hidden>Selectionner</option>
                 <option class="option" value="likes">Popularite</option>
                 <option class="option" value="date">Date</option>
@@ -50,7 +50,7 @@
             <!-- ici s'affichent les images du photographe -->
         </div>
 
-        <div class="likes-wrapper">
+        <div class="likes-wrapper" tabindex="6">
             <!-- ici s'affichent les likes par photographe -->
         </div>
 
