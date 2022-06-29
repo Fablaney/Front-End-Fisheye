@@ -119,23 +119,20 @@ select:focus, select:active
 {
     display: flex;
     flex-wrap: wrap;
-
+    justify-content: space-between;
     gap: 16px;
     margin-top: 50px;
     margin-bottom: 100px;
 }
-.medias-wrapper>div
+.medias-cards
 {
     display: flex;
     flex: 1 350px;
     height: 300px;
     max-width: 350px;
-}
-.medias-cards
-{
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 .img>img
 {
@@ -191,25 +188,28 @@ select:focus, select:active
     max-width: 350px;
 }
 
-
 @media (max-width: 768px)
 {
     .medias-wrapper
     {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         justify-content: center;
-        
+        gap: 16px;
         margin-top: 50px;
         margin-bottom: 100px;
     }
+    .medias-cards
+    {
+        display: flex;
+        flex: 1 350px;
+        height: 300px;
+        max-width: 350px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
 }
-
-
-
-
-
-
 
 /* Encart des Likes */
 .likes-wrapper
@@ -272,6 +272,13 @@ select:focus, select:active
     {
         flex: 1;
         margin-bottom: 3em;
+    }
+    .single-photograph-text>h2
+    {
+        color: #D3573C;
+        font-size: 40px !important;
+        margin: 30px 0;
+
     }
     .zone-tri
     {

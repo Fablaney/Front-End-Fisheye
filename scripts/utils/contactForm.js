@@ -3,11 +3,11 @@ function displayModal()
     // J'enleve le d-none sur la modale
     document.querySelector(".contact_modal").classList.remove("d-none")
 
-    document.querySelector(".header").setAttribute('aria-hidden', true);
+    // document.querySelector(".header").setAttribute('aria-hidden', true);
 
-    document.querySelector("#main").classList.add("d-none")
-    document.querySelector(".header").classList.add("d-none")
-    document.querySelector("#main").setAttribute('aria-hidden', true);
+    // document.querySelector("#main").classList.add("d-none")
+    // document.querySelector(".header").classList.add("d-none")
+    // document.querySelector("#main").setAttribute('aria-hidden', true);
     document.querySelector(".contact_modal").setAttribute('aria-hidden', false);
 
     // nom du photographe
