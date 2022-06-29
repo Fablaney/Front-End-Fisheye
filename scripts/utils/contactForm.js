@@ -34,7 +34,8 @@ function displayModal()
                         <div>
                             <label for="email">Email</label>
                             <input name="email" id="email" type="email" required aria-label="Email">
-
+                        </div>
+                        
                         <div>
                             <label for="message">Votre message</label>
                             <textarea name="message" id="message" type="text" required aria-label="Your message"></textarea>
