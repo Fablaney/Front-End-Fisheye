@@ -35,7 +35,7 @@
         <!-- zone avec le tri par XXX -->
         <div class="container zone-tri">
 
-            <div class="trier-par">Trier par</div>
+            <label class="trier-par" for="sort-page">Trier par</label>
 
             <select name="sortby" id="sort-page" onchange="sortBy(value)">
                 <option class="option" disabled selected hidden>Selectionner</option>
@@ -64,9 +64,9 @@
     <!-- lightbox -->
     <div class="lightbox-container d-none" role="dialog">
         <div class="lightbox" aria-label="image closeup view">
-            <button class="lightbox__close" onclick="closeLightBox()" aria-label="Close dialog"><i class="fas fa-times"></i></button>
-            <button class="lightbox__prev" aria-label="Previous image"><i class="fas fa-angle-left"></i></button>
-            <button class="lightbox__next" aria-label="Next image"><i class="fas fa-angle-right"></i></button>
+            <button class="lightbox__close" onclick="closeLightBox()" aria-label="Close dialog"><span class="fas fa-times"></span></button>
+            <button class="lightbox__prev" aria-label="Previous image"><span class="fas fa-angle-left"></span></button>
+            <button class="lightbox__next" aria-label="Next image"><span class="fas fa-angle-right"></span></button>
             
             <div class="lightbox-content">
                 <!-- ici s'affiche le media -->
