@@ -1,5 +1,5 @@
 @import url("photographer.css");
-
+@import url("flex.css");
 .test
 {
     border: 1px solid red;
@@ -20,13 +20,11 @@ header
 }
 h1
 {
-    color: #901C1C;
-    margin-right: 100px;
+    color: #901C1C; 
 }
 .logo
 {
     height: 50px;
-    margin-left: 100px;
 }
 .photographer_section
 {

@@ -86,12 +86,12 @@ function openLightBox(id)
             const getLightBox = () => {
                 if(video !== undefined)
                 {
-                    return `<video src="${vid}" type="video/mp4" controls aria-label="Liliac breasted roller"></video>
+                    return `<video src="${vid}" type="video/mp4" controls aria-label="${titre}" tabindex="2"></video>
                             <div class="title-lightbox">${titre}</div>`
                 }
                 else
                 {
-                    return `<img src="${img}" alt="Photo de ${name}" aria-label="Liliac breasted roller">
+                    return `<img src="${img}" alt="Photo de ${name}" aria-label="${titre}" tabindex="2">
                             <div class="title-lightbox">${titre}</div>`
                 }
             }
