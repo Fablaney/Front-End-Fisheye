@@ -14,7 +14,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
             return `
                 <div class="medias-cards">
 
-                    <a href="#" onclick="openLightBox(${id})" aria-label="Liliac Breasted roller, closeup view">
+                    <a href="#" onclick="openLightBox(${id})" aria-label="${title}, closeup view">
                         <div class="vid cards">
                             <video src="${vid}" type="video/mp4"></video>
                         </div>
@@ -37,7 +37,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
             return `
                 <div class="medias-cards">
 
-                    <a href="#" onclick="openLightBox(${id})" aria-label="Liliac Breasted roller, closeup view">
+                    <a href="#" onclick="openLightBox(${id})" aria-label="${title}, closeup view">
                         <div class="img cards">
                             <img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}" >
                         </div>
