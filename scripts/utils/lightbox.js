@@ -47,7 +47,7 @@ function openLightBox(id)
             }
 
             displayMedia()
-        } 
+        }
         function next()
         {
             if (currentIndex === mediasOfLightbox.length -1)
@@ -117,14 +117,14 @@ function openLightBox(id)
                 switch(el.key)
                 {
                     case "ArrowLeft" :
-                        prev(); 
-                        break; 
-                    case "ArrowRight": 
+                        prev();
+                        break;
+                    case "ArrowRight":
                         next();
-                        break; 
-                    case "Escape" : 
-                        closeLightBox(); 
-                        break; 
+                        break;
+                    case "Escape" :
+                        closeLightBox();
+                        break;
                 }
                 console.log(el.key)
             })
