@@ -98,17 +98,13 @@ function displayModal()
     listener()
 }
 
-let formNom
-let formPrenom
-let formEmail
-let formMessage
 
 function validateModal()
 {
-    formNom = document.querySelector("#nom").value
-    formPrenom = document.querySelector("#prenom").value
-    formEmail = document.querySelector("#email").value
-    formMessage = document.querySelector("#message").value
+    let formNom = document.querySelector("#nom").value
+    let formPrenom = document.querySelector("#prenom").value
+    let formEmail = document.querySelector("#email").value
+    let formMessage = document.querySelector("#message").value
 
     // Je récupere la valeur du champ et l'affiche en console
     if ( formNom.length > 0 && formPrenom.length > 0 && formEmail.length > 0 && formMessage.length > 0 && formMessage.length != "    ")
