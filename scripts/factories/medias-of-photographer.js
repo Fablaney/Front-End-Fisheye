@@ -6,7 +6,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
 
     const img = `assets/photographers/${name}/${image}`;
     const vid = `assets/photographers/${name}/${video}`;
-  
+
     // Fonction de la création des cartes des photographes
     const getMediasCardDOM = () => {
         if(video !== undefined)
@@ -26,7 +26,10 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                         </div>
 
                         <div class="likes" id="likes-${id}">
-                            <span>${likes}</span> <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"  aria-label="likes"></i>
+                            <span>${likes}</span> 
+                            <a href="#" onKeyUp="likeKey(${id})">
+                                <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})" aria-label="likes"></i>
+                            </a>
                         </div>
                     </div>
                     
@@ -39,7 +42,7 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
 
                     <a href="#" onclick="openLightBox(${id})" aria-label="${title}, closeup view">
                         <div class="img cards">
-                            <img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}" >
+                            <img class="w-100 img-lightbox" src="${img}" alt="Photo de ${name}">
                         </div>
                     </a>
 
@@ -49,12 +52,15 @@ function photographerFactoryMedias(dataMedias, dataPhotographer)
                         </div>
 
                         <div class="likes" id="likes-${id}">
-                            <span>${likes}</span> <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})"></i>
+                            <span>${likes}</span> 
+                            <a href="#" onKeyUp="likeKey(${id})">
+                                <i class="fas fa-heart addlike" id="heart-${id}" onclick="addordislike(${id})" aria-label="likes"></i>
+                            </a>
                         </div>
                     </div>
                     
-                </div>`
-        ;}
+                </div>`;
+        }
     }
 
     return { name, date, id, photographerId, price, title, image, video, likes, getMediasCardDOM };

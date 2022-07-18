@@ -125,25 +125,31 @@ async function init()
 init();
 
 // Fonction pour ajouter/supprimer un like
+function likeKey(id)
+{
+    let a = document.querySelector("#likes-"+ id + " a")
+
+    a.addEventListener('keyup', function(el)
+    {
+        if (el.key === "Enter")
+        {
+            el.stopImmediatePropagation() 
+            addordislike(id)  
+        }
+    })
+} 
+
 function addordislike(id)
 {
+    let a = document.querySelector("#likes-"+ id + " a")
+
+    a.addEventListener('click', function(e)
+    { 
+        e.preventDefault()
+    })
+    
     // soluce 1
     let media = mediasOfPhotographer.find(media_photographer => media_photographer.id == id)
-
-    // soluce 2
-    // let media = mediasOfPhotographer.find((media_photographer) => {
-    //     return media_photographer.id == id
-    // })
-
-    // soluce 3
-    // let media = mediasOfPhotographer.find(
-    // function(media_photographer)
-    // {
-    //     return media_photographer.id == id
-    // })
-
-    // console;log("je rentre dans la fonction")
-    // console;log("je récupere id = " + id)
 
     if (document.querySelector("#likes-" + id + " i").classList.contains("liked"))
     {

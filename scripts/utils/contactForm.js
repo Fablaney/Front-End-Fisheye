@@ -3,12 +3,10 @@ function displayModal()
     // J'enleve le d-none sur la modale
     document.querySelector(".contact_modal").classList.remove("d-none")
 
-    // document.querySelector(".header").setAttribute('aria-hidden', true);
-
-    // document.querySelector("#main").classList.add("d-none")
-    // document.querySelector(".header").classList.add("d-none")
-    // document.querySelector("#main").setAttribute('aria-hidden', true);
     document.querySelector(".contact_modal").setAttribute('aria-hidden', false);
+
+    document.querySelector(".header").classList.add("d-none")
+    document.querySelector("#main").classList.add("d-none")
 
     // nom du photographe
     let name = onePhotographer.name
@@ -74,14 +72,6 @@ function displayModal()
     // acessibilité au clavier
     function listener()
     {
-        document.querySelector(".lightbox__prev").addEventListener("click", () => {
-            prev()
-        })
-
-        document.querySelector(".lightbox__next").addEventListener("click", () => {
-            next()
-        })
-
         document.addEventListener('keyup', (el) =>{
             switch(el.key)
             {
@@ -123,5 +113,6 @@ function validateModal()
 function closeModal()
 {
     document.querySelector(".contact_modal").classList.add("d-none")
-
+    document.querySelector(".header").classList.remove("d-none")
+    document.querySelector("#main").classList.remove("d-none")
 }
